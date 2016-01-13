@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+      <button type="button" {{action 'toggleSidebar'}} class="btn btn-default">Byt Sida</button>
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" class="{{if showMainCard 'active'}}"><a href="javascript:void();" {{action 'showMainCard'}}>Huvudkort</a></li>
+        <li role="presentation" class="{{if showReferenceCard 'active'}}"><a href="javascript:void();" {{action 'showReferenceCard'}}>Hänvisningskort</a></li>
+      </ul>
+      {{#if showMainCard}}
+      <div>
+        <form>
+          <div class="form-group">
+            <label for="authorInput">Författare/Titeluppslag</label>
+            {{input value=author type="text" class="form-control" id="authorInput" placeholder="Författare"}}
+            <div class="checkbox">
+              <label>
+                {{input type="checkbox" name="isTitleLookup" checked=isTitleLookup}} Titeluppslag
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="titleInput">Titel</label>
+            {{input value=title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup}}
+          </div>
+
+          <div class="form-group">
+            <label for="yearInput">År</label>
+              {{input value=year type="text" class="form-control" id="yearInput" placeholder="År" disabled=isWithoutYear}}
+            <div class="checkbox">
+              <label>
+                {{input type="checkbox" name="isWithoutYear" checked=isWithoutYear}} Utan år
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="placeInput">Signum</label>
+            <select class="form-control">
+              {{#each signumList key="@index" as |signum|}}
+              <option value="{{signum}}">
+                {{signum}}
+              </option>
+              {{/each}}
+            </select>
+          </div>
+        </form>
+      </div>
+      {{/if}}
+      {{#if showReferenceCard}}
+      <div>
+        <form>
+          <div class="form-group">
+            <label for="authorInput">Författare/Titeluppslag</label>
+            {{input value=author type="text" class="form-control" id="authorInput" placeholder="Författare"}}            
+          </div>
+          <div class="form-group">
+            <label for="titleInput">Se</label>
+            {{textarea value=title type="text" class="form-control" id="titleInput" placeholder="Hänvisning"}}
+          </div>
+        </form>
+      </div>
+      {{/if}}
+      <div class="pull-left">
+        <button {{action 'previous' model}} class="btn btn-link">Föregående</button>
+      </div>
+      <div class="pull-right">
+        <button {{action 'next' model}} class="btn btn-default">Hoppa över</button>
+        <button {{action 'next' model}} class="btn btn-success">Klar</button>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+
+    <div class="image-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+      <img src="{{imageUrl}}" id="card-image" class="img-responsive">
+    </div>
+
+  </div>
+</div>
