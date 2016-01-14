@@ -10,6 +10,16 @@
       <div>
         <form>
           <div class="form-group">
+            <label for="placeInput">Signum</label>
+            <select class="form-control">
+              {{#each signumList key="@index" as |signum|}}
+              <option value="{{signum}}">
+                {{signum}}
+              </option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group">
             <label for="authorInput">Författare/Titeluppslag</label>
             {{input value=author type="text" class="form-control" id="authorInput" placeholder="Författare"}}
             <div class="checkbox">
@@ -20,7 +30,7 @@
           </div>
           <div class="form-group">
             <label for="titleInput">Titel</label>
-            {{input value=title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup}}
+            {{textarea rows="3" value=title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup}}
           </div>
 
           <div class="form-group">
@@ -33,14 +43,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="placeInput">Signum</label>
-            <select class="form-control">
-              {{#each signumList key="@index" as |signum|}}
-              <option value="{{signum}}">
-                {{signum}}
-              </option>
-              {{/each}}
-            </select>
+            <label for="titleInput">Problem</label>
+            {{textarea rows="3" value=title type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning"}}
           </div>
         </form>
       </div>
@@ -50,7 +54,7 @@
         <form>
           <div class="form-group">
             <label for="authorInput">Författare/Titeluppslag</label>
-            {{input value=author type="text" class="form-control" id="authorInput" placeholder="Författare"}}            
+            {{input value=author type="text" class="form-control" id="authorInput" placeholder="Författare"}}
           </div>
           <div class="form-group">
             <label for="titleInput">Se</label>
