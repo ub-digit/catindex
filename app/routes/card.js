@@ -18,11 +18,13 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model) {
 
-    controller.set('author', '');
-    controller.set('title', '');
-    controller.set('place', '');
+    controller.set('author', null);
+    controller.set('title', null);
+    controller.set('year', null);
     controller.set('isTitleLookup', false);
     controller.set('isWithoutYear', false);
+    controller.set('problem', null);
+    controller.set('signum', null);
 
     controller.set('model', model);
 

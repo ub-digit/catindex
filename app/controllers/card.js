@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   year: null,
   isTitleLookup: null,
   isWithoutYear: null,
+  problem: null,
 
   sidebarRight: false,
 
