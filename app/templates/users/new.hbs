@@ -1,0 +1,31 @@
+<div class="container users-container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form>
+        <div class="form-group">
+          <label>Roll</label>
+          {{#x-select value=role class="form-control"}}
+            {{#x-option value="operator"}}
+              Operatör
+            {{/x-option}}
+            {{#x-option value="administrator"}}
+              Administratör
+            {{/x-option}}
+          {{/x-select}}
+        </div>
+        <div class="form-group">
+          <label for="userNameInput">Användarnamn</label>
+          {{input value=username type="text" class="form-control" id="userNameInput" placeholder="Användarnamn"}}
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="pull-right">
+        <button {{action 'cancel'}} class="btn btn-link">Avbryt</button>
+        <button class="btn btn-primary">Ny användare</button>
+      </div>
+    </div>
+  </div>
+</div>

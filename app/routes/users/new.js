@@ -4,12 +4,10 @@ export default Ember.Route.extend({
 
   actions: {
 
-    createNewUser: function() {
+    cancel: function() {
 
-      this.transitionTo('users.new');
+      this.transitionTo('users');
 
     }
-
   }
-
 });
