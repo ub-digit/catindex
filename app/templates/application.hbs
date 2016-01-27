@@ -6,6 +6,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {{#if session.isAuthenticated}}
+        <p class="navbar-text">Inloggad som {{session.content.secure.username}}</p>
         <li><a href="#" {{action 'logout'}}>Logga ut</a></li>
       {{/if}}
     </ul>
