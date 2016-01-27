@@ -4,6 +4,11 @@
       <li>{{#link-to 'card' '1'}}Kort{{/link-to}}</li>
       <li>{{#link-to 'list'}}List{{/link-to}}</li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {{#if session.isAuthenticated}}
+        <li><a href="#" {{action 'logout'}}>Logga ut</a></li>
+      {{/if}}
+    </ul>
   </div>
 </nav>
 {{outlet}}

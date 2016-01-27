@@ -6,6 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('login');
   this.route('card', {path: '/card/:id'});
   this.route('list');
 });

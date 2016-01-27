@@ -16,3 +16,7 @@
 npm-debug.log
 testem.log
 /config/environment.js
+
+*~
+\#*#
+.#*
