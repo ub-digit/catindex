@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('card', {path: '/card/:id'});
   this.route('list');
   this.route('home');
+  this.route('users');
 });
 
 export default Router;
