@@ -1,7 +1,8 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
+//import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+//export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend({
 
   queryParams: {
     id: {
@@ -19,11 +20,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   setupController: function(controller, model) {
 
-    controller.set('author', null);
+    controller.set('lookupFieldType', null);
+    controller.set('lookupFieldValue', null);
+    controller.set('authors', []);
     controller.set('title', null);
-    controller.set('year', null);
-    controller.set('isTitleLookup', false);
+    controller.set('year1', null);
+    controller.set('year2', null);
     controller.set('isWithoutYear', false);
+    controller.set('isSv', false);
     controller.set('problem', null);
     controller.set('signum', null);
 

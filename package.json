@@ -32,11 +32,12 @@
     "ember-cli-less": "^1.5.3",
     "ember-cli-qunit": "^1.0.4",
     "ember-cli-release": "0.2.8",
+    "ember-cli-simple-auth": "0.8.0",
     "ember-cli-sri": "^1.2.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-cli-simple-auth": "0.8.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-radio-button": "1.0.7",
     "emberx-select": "2.0.2"
   }
 }
