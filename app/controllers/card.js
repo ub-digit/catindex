@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   year2: null,
   isWithoutYear: null,
   problem: null,
-  isSv: false;
+  isSv: false,
 
   sidebarRight: false,
 
