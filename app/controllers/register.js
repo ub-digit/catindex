@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
   isLookupFieldTypeAuthor: Ember.computed.equal('lookupFieldType', 'author'),
 
   imageUrl: Ember.computed('model', function() {
-    return 'http://ipac.ub.gu.se/katalog1957/PictureLoader?Antialias=ON&ImageId=' + this.get('model') + '&Scale=1';
+    return 'http://ipac.ub.gu.se/katalog1957/PictureLoader?Antialias=ON&ImageId=' + this.get('model.ipac_image_id') + '&Scale=1';
   }),
 
   actions: {

@@ -3,7 +3,8 @@ import ENV from '../config/environment';
 
 export default Ember.Object.extend({
   endpoints: {
-    user: { path: 'users'}
+    user: { path: 'users'},
+    card: { path: 'cards'}
   },
 
   getLocale: function() {
@@ -96,14 +97,14 @@ export default Ember.Object.extend({
   urlOne: function(name, id, params) {
     var url = ENV.APP.serviceURL + '/' + this.endpoint(name).path + '/' + id;
     if(params) {
-      url += '&' + Ember.$.param(params);
+      url += '?' + Ember.$.param(params);
     }
     return url;
   },
   urlMany: function(name, params) {
     var url = ENV.APP.serviceURL + '/' + this.endpoint(name).path;
     if(params) {
-      url += '&' + Ember.$.param(params);
+      url += '?' + Ember.$.param(params);
     }
     return url;
   },

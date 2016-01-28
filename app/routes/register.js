@@ -1,21 +1,11 @@
 import Ember from 'ember';
-//import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
+import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 
-//export default Ember.Route.extend(AuthenticatedRouteMixin, {
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
-  queryParams: {
-    id: {
-      refreshModel: true
-    }
-  },
-
-  model: function(params) {
-
-    var id = params.id || '1';
-
-    return id;
-
+  model: function() {
+    var username = this.container.lookup('simple-auth-session:main').get('secure.username');
+    return this.store.find('card', 'primary', {username: username});
   },
 
   setupController: function(controller, model) {
