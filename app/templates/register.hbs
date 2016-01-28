@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" class="{{if showMainCard 'active'}}"><a href="javascript:void();" {{action 'showMainCard'}}>Huvudkort</a></li>
+        <li role="presentation" class="{{if showReferenceCard 'active'}}"><a href="javascript:void();" {{action 'showReferenceCard'}}>Hänvisningskort</a></li>
+        <li role="presentation" class="{{if showReferenceCard 'active'}}"><a href="javascript:void();" {{action 'showReferenceCard'}}>Pseudonymkort</a></li>
+      </ul>
+      {{#if showMainCard}}
+        {{partial "main-card-form"}}
+      {{else if showReferenceCard}}
+        {{partial "reference-card-form"}}
+      {{/if}}
+      <div class="pull-left">
+        <button {{action 'cancel'}} class="btn btn-link">Avbryt</button>
+      </div>
+      <div class="pull-right">
+        <button {{action 'next' model}} class="btn btn-success">Klar</button>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+
+    <div class="image-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+      <img src="{{imageUrl}}" id="card-image" class="img-responsive">
+    </div>
+
+  </div>
+</div>

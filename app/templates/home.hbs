@@ -1,7 +1,23 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li>{{#link-to 'home'}}Home{{/link-to}}</li>
+      <li>{{#link-to 'users'}}Användare{{/link-to}}</li>
+      <li>{{#link-to 'card' '1'}}Kort{{/link-to}}</li>
+      <li>{{#link-to 'list'}}List{{/link-to}}</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {{#if session.isAuthenticated}}
+        <p class="navbar-text">Inloggad som {{session.content.secure.username}}</p>
+        <li><a href="#" {{action 'logout'}}>Logga ut</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
 <div class="container startpage-container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-      <h1>Hej xkumag!</h1>
+      <h1>Hej, {{session.content.secure.username}}!</h1>
     </div>
   </div>
   <div class="row stats-row">
@@ -24,10 +40,10 @@
   </div>
   <div class="row button-row">
     <div class="col-sm-5 col-sm-offset-1 col-lg-3 col-lg-offset-3">
-      <button class="btn btn-block btn-primary btn-lg">Indexera kort</button>
+      {{#link-to 'register' class="btn btn-block btn-primary btn-lg"}}Indexera kort{{/link-to}}
     </div>
     <div class="col-sm-5 col-lg-3">
-      <button class="btn btn-block btn-primary btn-lg">Motläsa kort</button>
+      {{#link-to 'register' class="btn btn-block btn-primary btn-lg"}}Motläsa kort{{/link-to}}      
     </div>
   </div>
 </div>
