@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     return 'http://ipac.ub.gu.se/katalog1957/PictureLoader?Antialias=ON&ImageId=' + this.get('model.ipac_image_id') + '&Scale=1';
   }),
 
-  // Validation properties
+  // Validation properties for main card
 
   isClassificationValid: Ember.computed.notEmpty('model.classification'),
 
@@ -49,19 +49,37 @@ export default Ember.Controller.extend({
     }
   }),
 
+  // Validation properties for reference card
+
+  isReferenceTextValid: Ember.computed.notEmpty('model.reference_text'),
+
+
+  // General validation properties
+
   isProblemValid: Ember.computed.match('model.primary_registrator_problem', /\w{3,}/),
 
-  isFormComplete: Ember.computed('isProblemValid', 'isClassificationValid', 'isLookupFieldValueValid', 'isLookupFieldTypeValid', 'isTitleValid', 'areYearsValid', function() {
+  isFormComplete: Ember.computed('model.card_type', 'isProblemValid', 'isClassificationValid', 'isLookupFieldValueValid', 'isLookupFieldTypeValid', 'isTitleValid', 'areYearsValid', 'isReferenceTextValid', function() {
     if (this.get('isProblemValid')) {
       return true;
     }
-    if (
-      this.get('isClassificationValid') &&
-      this.get('isLookupFieldValueValid') &&
-      this.get('isLookupFieldTypeValid') &&
-      this.get('isTitleValid') &&
-      this.get('areYearsValid')) {
-      return true;
+
+    if (this.get('model.card_type') === 'main') {
+      if (
+        this.get('isClassificationValid') &&
+        this.get('isLookupFieldValueValid') &&
+        this.get('isLookupFieldTypeValid') &&
+        this.get('isTitleValid') &&
+        this.get('areYearsValid')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (this.get('model.card_type') === 'reference' || this.get('model.card_type') === 'pseudonym') {
+      if (this.get('isLookupFieldValueValid') && this.get('isReferenceTextValid')) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }

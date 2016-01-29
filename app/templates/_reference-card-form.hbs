@@ -1,16 +1,16 @@
 <div>
   <form>
     <div class="form-group">
-      <label for="authorInput">Författare/Titeluppslag</label>
-      {{input value=author type="text" class="form-control" id="authorInput" placeholder="Författare"}}
+      <label for="lookupFieldValue">Huvuduppslag</label>
+      {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag"}}
     </div>
     <div class="form-group">
       <label for="referenceInput">Se</label>
-      {{textarea value=title type="text" class="form-control" id="referenceInput" placeholder="Hänvisning"}}
+      {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning"}}
     </div>
     <div class="form-group">
       <label for="problemInput">Problem</label>
-      {{textarea rows="3" value=problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning"}}
+      {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning"}}
     </div>
   </form>
 </div>
