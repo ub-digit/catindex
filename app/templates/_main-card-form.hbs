@@ -41,9 +41,9 @@
 
         {{#if isLookupFieldTypeAuthor}}
         {{#each model.authors as |author|}}
-        <div class="form-group">
-          {{input value=author.author type="text" class="form-control" placeholder="Författare"}}
-        </div>
+          <div class="form-group">
+            {{input value=author.author type="text" class="form-control" placeholder="Författare"}}            
+          </div>
         {{/each}}
         <div>
           <button {{action 'addAuthor'}} class="btn btn-link">+ Ytterligare författare</button>
@@ -62,15 +62,20 @@
             <label>År</label>
           </div>
         </div>
+
+
         <div class="row">
           <div class="col-xs-12">
-            <div class="form-inline">
-              <div class="form-group">
-                {{input value=model.year_from type="text" class="form-control" id="yearInput1" placeholder="År" disabled=isWithoutYearChecked}}
-              </div>
-              -
-              <div class="form-group">
-                {{input value=model.year_to type="text" class="form-control" id="yearInput2" placeholder="År" disabled=isWithoutYearChecked}}
+            <div class="form-group">
+              <div class="input-group">
+                {{input value=model.year_from type="text" class="form-control" id="yearInput1" placeholder="År" disabled=model.no_year}}
+                <span class="input-group-addon">
+                  -
+                </span>
+                {{input value=model.year_to type="text" class="form-control" id="yearInput2" placeholder="År" disabled=model.no_year}}
+                <span class="input-group-addon">
+                  {{input type="checkbox" name="no_year" checked=model.no_year}} Utan år
+                </span>
               </div>
             </div>
           </div>
@@ -78,16 +83,11 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <div class="checkbox">
-              <label>
-                {{input type="checkbox" name="no_year" checked=model.no_year}} Utan år
-              </label>
+            <div class="form-group">
+              <label for="problemInput">Problem</label>
+              {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning"}}
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="problemInput">Problem</label>
-          {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning"}}
         </div>
       </form>
     </div>

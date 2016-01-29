@@ -29,7 +29,7 @@
         <button {{action 'cancel'}} class="btn btn-link">Avbryt</button>
       </div>
       <div class="pull-right">
-        <button {{action 'saveCard' model}} disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-success">Klar</button>
+        <button data-toggle="modal" data-target="#confirmModal" disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary">Klar</button>
       </div>
 
     </div>
@@ -39,7 +39,11 @@
         <div class="alert alert-info" role="alert">{{model.ipac_note}}</div>
       {{/if}}
       <img src="{{imageUrl}}" id="card-image" class="img-responsive">
+      <div class="toolbar-floating">        
+        <button {{action 'toggleSidebar'}} class="btn btn-primary floating">Byt sida</button>
+      </div>
     </div>
 
   </div>
 </div>
+{{partial "register-confirm-modal"}}

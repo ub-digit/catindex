@@ -23,6 +23,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     saveCard: function(card){
       var that = this;
 
+      Ember.$('#confirmModal').modal('hide');
+
       card.registration_type = 'primary';
       card.collection = (card.is_sv) ? 'sv' : null;
       card.additional_authors = card.authors.mapBy('author');
