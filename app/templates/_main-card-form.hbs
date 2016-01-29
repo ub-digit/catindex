@@ -5,7 +5,7 @@
     <div class="form-inline">
       <label for="signumInput">Signum</label>
       <div class="form-group">
-        {{#x-select value=signum class="form-control"}}
+        {{#x-select value=model.classification class="form-control"}}
         {{#x-option}}
         Välj...
         {{/x-option}}
@@ -26,18 +26,18 @@
 
     <div class="form-group">
       <label for="lookupFieldValue">Huvuduppslag</label>
-      {{input value=lookupFieldValue type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag"}}
+      {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag"}}
     </div>
 
 
     {{#radio-button
       value="author"
-      groupValue=lookupFieldType}}
+      groupValue=model.lookup_field_type}}
       Författare
       {{/radio-button}}
       {{#radio-button
         value="title"
-        groupValue=lookupFieldType}}
+        groupValue=model.lookup_field_type}}
         Titel
         {{/radio-button}}
 
@@ -56,7 +56,7 @@
 
         <div class="form-group">
           <label for="titleInput">Titel</label>
-          {{textarea rows="3" value=title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup}}
+          {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup}}
         </div>
 
         <div class="row">
@@ -68,11 +68,11 @@
           <div class="col-xs-12">
             <div class="form-inline">
               <div class="form-group">
-                {{input value=year1 type="text" class="form-control" id="yearInput1" placeholder="År" disabled=isWithoutYear}}
+                {{input value=model.year_from type="text" class="form-control" id="yearInput1" placeholder="År" disabled=isWithoutYear}}
               </div>
               -
               <div class="form-group">
-                {{input value=year2 type="text" class="form-control" id="yearInput2" placeholder="År" disabled=isWithoutYear}}
+                {{input value=model.year_to type="text" class="form-control" id="yearInput2" placeholder="År" disabled=isWithoutYear}}
               </div>
             </div>
           </div>

@@ -70,9 +70,8 @@ export default Ember.Controller.extend({
       this.get('authors').pushObject(Ember.Object.create({author: ""}));
 
     },
-    next: function(id) {
-      id++;
-      this.transitionToRoute('card', id);
+    next: function() {
+      this.transitionToRoute('register');
     },
     cancel: function() {
       this.transitionToRoute('home');
