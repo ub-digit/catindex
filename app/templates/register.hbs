@@ -35,6 +35,9 @@
     </div>
 
     <div class="image-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+      {{#if model.ipac_note}}
+        <div class="alert alert-info" role="alert">{{model.ipac_note}}</div>
+      {{/if}}
       <img src="{{imageUrl}}" id="card-image" class="img-responsive">
     </div>
 
