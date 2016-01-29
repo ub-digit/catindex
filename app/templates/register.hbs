@@ -29,11 +29,9 @@
         <button {{action 'cancel'}} class="btn btn-link">Avbryt</button>
       </div>
       <div class="pull-right">
-        <button {{action 'saveCard' model}} class="btn btn-success">Klar</button>
+        <button {{action 'saveCard' model}} disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-success">Klar</button>
       </div>
-      <div class="clearfix">
 
-      </div>
     </div>
 
     <div class="image-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
