@@ -1,18 +1,29 @@
 <div class="container-fluid">
-
-  {{log model}}
   <div class="row">
     <div class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
 
-      <ul class="nav nav-tabs nav-justified">
-        <li role="presentation" class="{{if showMainCard 'active'}}"><a href="javascript:void();" {{action 'showMainCard'}}>Huvudkort</a></li>
-        <li role="presentation" class="{{if showReferenceCard 'active'}}"><a href="javascript:void();" {{action 'showReferenceCard'}}>Hänvisningskort</a></li>
-        <li role="presentation" class="{{if showReferenceCard 'active'}}"><a href="javascript:void();" {{action 'showReferenceCard'}}>Pseudonymkort</a></li>
-      </ul>
+      <div class="row cardTypeSelectorRow">
+        <div class="col-xs-12">
+          <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <button type="button" {{action 'setMainCard'}} class="btn {{if showMainCard 'btn-primary' 'btn-default'}}">Huvudkort</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" {{action 'setReferenceCard'}} class="btn {{if showReferenceCard 'btn-primary' 'btn-default'}}">Hänvisningskort</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" {{action 'setPseudonymCard'}} class="btn {{if showPseudonymCard 'btn-primary' 'btn-default'}}">Pseudonymkort</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {{#if showMainCard}}
         {{partial "main-card-form"}}
       {{else if showReferenceCard}}
         {{partial "reference-card-form"}}
+      {{else if showPseudonymCard}}
+        pseudonym
       {{/if}}
       <div class="pull-left">
         <button {{action 'cancel'}} class="btn btn-link">Avbryt</button>

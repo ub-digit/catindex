@@ -20,6 +20,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('isSv', false);
     controller.set('problem', null);
     controller.set('signum', null);
+    controller.set('cardType', 'main');
 
     controller.set('model', model);
 
@@ -27,8 +28,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     controller.set('signumList', signumList);
 
-    controller.set('showMainCard', true);
-    controller.set('showReferenceCard', false);
+
+
 
   }
 

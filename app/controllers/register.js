@@ -14,8 +14,11 @@ export default Ember.Controller.extend({
 
   sidebarRight: false,
 
-  showMainCard: true,
-  showReferenceCard: false,
+  showMainCard: Ember.computed.equal('cardType', 'main'),
+  showReferenceCard: Ember.computed.equal('cardType', 'reference'),
+  showPseudonymCard: Ember.computed.equal('cardType', 'pseudonym'),
+
+
 
   isLookupFieldTypeAuthor: Ember.computed.equal('lookupFieldType', 'author'),
 
@@ -39,6 +42,17 @@ export default Ember.Controller.extend({
     toggleSidebar: function() {
       this.toggleProperty('sidebarRight');
     },
+
+    setMainCard: function() {
+      this.set('cardType', 'main');
+    },
+    setReferenceCard: function() {
+      this.set('cardType', 'reference');
+    },
+    setPseudonymCard: function() {
+      this.set('cardType', 'pseudonym');
+    },
+
     showMainCard: function() {
       this.set('showMainCard', true);
       this.set('showReferenceCard', false);
