@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+    <div id="formCol" class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
       <div class="row">
         <div class="col-xs-12">
-          <div class="form-group">            
+          <div class="form-group">
             {{#if model.primary_registrator_problem}}
             <div class="alert alert-warning">
               <strong>Indexeringsproblem</strong><br/>
