@@ -56,11 +56,7 @@ export default Ember.Mixin.create({
 
   // General validation properties
 
-  isFormComplete: Ember.computed('model.card_type', 'isProblemValid', 'isClassificationValid', 'isLookupFieldValueValid', 'isLookupFieldTypeValid', 'isTitleValid', 'areYearsValid', 'isReferenceTextValid', function() {
-    if (this.get('isProblemValid')) {
-      return true;
-    }
-
+  isCardValid: Ember.computed('model.card_type', 'isClassificationValid', 'isLookupFieldValueValid', 'isLookupFieldTypeValid', 'isTitleValid', 'areYearsValid', 'isReferenceTextValid', function() {
     if (this.get('model.card_type') === 'main') {
       if (
         this.get('isClassificationValid') &&
@@ -78,6 +74,18 @@ export default Ember.Mixin.create({
       } else {
         return false;
       }
+    } else {
+      return false;
+    }
+  }),
+
+  isFormComplete: Ember.computed('isCardValid', 'isProblemValid', function() {
+    if (this.get('isProblemValid')) {
+      return true;
+    }
+
+    if (this.get('isCardValid')) {
+      return true;
     } else {
       return false;
     }
@@ -123,8 +131,16 @@ export default Ember.Mixin.create({
     }
   }),
 
-  showProblemError: Ember.computed('isProblemValid', 'wasProblemTouched', function() {
-    if(this.get('wasProblemTouched') && !this.get('isProblemValid')) {
+  showReferenceTextError: Ember.computed('isReferenceTextValid', 'wasReferenceTextTouched', function() {
+    if(this.get('wasReferenceTextTouched') && !this.get('isReferenceTextValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  showProblemError: Ember.computed('isProblemValid', 'isCardValid', 'wasProblemTouched', function() {
+    if(this.get('wasProblemTouched') && !this.get('isProblemValid') && !this.get('isCardValid')) {
       return true;
     } else {
       return false;
@@ -161,6 +177,9 @@ export default Ember.Mixin.create({
     },
     setYearsTouched: function() {
       this.set('wasYearsTouched', true);
+    },
+    setReferenceTextTouched: function() {
+      this.set('wasReferenceTextTouched', true);
     },
     setProblemTouched: function() {
       this.set('wasProblemTouched', true);
