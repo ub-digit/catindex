@@ -14,7 +14,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('model.is_sv', false);
     controller.set('model.authors', Ember.A([]));
 
-    // Reset all 
+    // Reset all
   controller.set('wasClassificationTouched', false);
   controller.set('wasLookupFieldValueTouched', false);
   controller.set('wasLookupFieldTypeTouched', false);
@@ -35,14 +35,18 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
       card.registration_type = 'primary';
       card.collection = (card.is_sv) ? 'sv' : null;
-      card.additional_authors = card.authors.mapBy('author');
+      card.additional_authors = card.authors.map(function(item) {
+        return item.author || null;
+      }).compact();
+
+      console.log(card.additional_authors);
       this.store.save('card', card).then(
         function(){
           if (target) {
             that.transitionTo(target);
           } else {
             that.refresh();
-          }          
+          }
         },
         function(){
 

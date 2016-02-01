@@ -1,28 +1,19 @@
-<div>
-  <form>
-    <div class="form-group">
-      <label for="lookupFieldValue">Huvuduppslag</label>
-      {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag"}}
-    </div>
-    {{#radio-button
-      value="author"
-      groupValue=model.lookup_field_type}}
-      Författare
-    {{/radio-button}}
-    {{#radio-button
-      value="title"
-      groupValue=model.lookup_field_type}}
-      Titel
-    {{/radio-button}}
-    <hr/>
-    <div class="form-group">
-      <label for="referenceInput">Se</label>
-      {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning"}}
-    </div>
-    <hr/>
-    <div class="form-group">
-      <label for="problemInput">Problem</label>
-      {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning"}}
-    </div>
-  </form>
+<div class="form-group">
+  <label for="lookupFieldValue">Huvuduppslag</label>
+  {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag"}}
+</div>
+{{#radio-button
+  value="author"
+  groupValue=model.lookup_field_type}}
+  Författare
+{{/radio-button}}
+{{#radio-button
+  value="title"
+  groupValue=model.lookup_field_type}}
+  Titel
+{{/radio-button}}
+<hr/>
+<div class="form-group">
+  <label for="referenceInput">Se</label>
+  {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning"}}
 </div>

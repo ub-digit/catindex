@@ -1,5 +1,4 @@
-<div>
-  <form>
+
     <div class="form-inline">
       <label for="signumInput">Signum</label>
       <div class="form-group {{if showClassificationError 'has-error'}}">
@@ -83,14 +82,4 @@
             </div>
           </div>
         </div>
-        <hr/>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group {{if showProblemError 'has-error'}}">
-              <label for="problemInput">Problem</label>
-              {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning" focus-out="setProblemTouched"}}
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+        
