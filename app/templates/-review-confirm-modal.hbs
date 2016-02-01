@@ -61,7 +61,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Tillbaka</button>
         </div>
         <button {{action 'saveCard' model 'home'}} type="button" class="btn btn-primary" data-dismiss="modal">Spara + avsluta</button>
-        <button autofocus="autofocus" {{action 'saveCard' model}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-success">Spara + nytt kort</button>
+        <button id="saveNextButton" {{action 'saveCard' model}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-success">Spara + nytt kort</button>
       </div>
     </div>
   </div>

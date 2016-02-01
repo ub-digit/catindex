@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
+import ResetsScroll from 'catindex/mixins/resets-scroll';
+import IndicatesLoading from 'catindex/mixins/indicates-loading';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, IndicatesLoading, {
 
   model: function() {
     return this.store.find('card', 'secondary');
@@ -42,6 +44,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     controller.set('signumList', signumList);
 
+    Ember.run.later(function() {
+      Ember.$('#confirmModal').on('shown.bs.modal', function () {
+        Ember.$('#saveNextButton').focus();
+      });
+    });
+
   },
 
   actions: {
@@ -62,6 +70,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
             that.transitionTo(target);
           } else {
             that.refresh();
+            that.scrollToTop();
+            Ember.$('#formCol').scrollTop(0);
           }
         },
         function(){

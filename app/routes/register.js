@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
+import ResetsScroll from 'catindex/mixins/resets-scroll';
+import IndicatesLoading from 'catindex/mixins/indicates-loading';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, IndicatesLoading, {
 
   model: function() {
     return this.store.find('card', 'primary');
@@ -15,17 +17,23 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('model.authors', Ember.A([]));
 
     // Reset all
-  controller.set('wasClassificationTouched', false);
-  controller.set('wasLookupFieldValueTouched', false);
-  controller.set('wasLookupFieldTypeTouched', false);
-  controller.set('wasTitleTouched', false);
-  controller.set('wasYearsTouched', false);
-  controller.set('wasReferenceTextTouched', false);
-  controller.set('wasProblemTouched', false);
+    controller.set('wasClassificationTouched', false);
+    controller.set('wasLookupFieldValueTouched', false);
+    controller.set('wasLookupFieldTypeTouched', false);
+    controller.set('wasTitleTouched', false);
+    controller.set('wasYearsTouched', false);
+    controller.set('wasReferenceTextTouched', false);
+    controller.set('wasProblemTouched', false);
 
     var signumList = ['Acta', 'Bibliogr', 'Biogr', 'Bokhandel', 'Bokhåll', 'Bokväs', 'Deklam', 'Ekon', 'Encykl', 'Estet', 'Etnogr', 'Film', 'Filos', 'Fornk', 'Förvaltn', 'Geneal', 'Gymn & sport', 'Geogr', 'Handel', 'Herald', 'Hist', 'Intern rätt', 'Jurid', 'Kartogr', 'Kartor', 'Kolonialväs & imper', 'Kommunalväs', 'Kommunik', 'Konst', 'Krigsväs', 'Kulturhist', 'Kyrkohist', 'Kyrkoväs', 'Litt', 'Litt-hist', 'Magi', 'Matern', 'Med', 'Metrik', 'Musik', 'Mynt, mått & vikt', 'Möten & kongr', 'Naturvet', 'Numism', 'Nykterh', 'Ordensväs', 'Pedag', 'Polit ekon', 'Polygr', 'Religionsvet', 'Skrivkonst', 'Socialpol', 'Sociol', 'Sport & spel', 'Språkvet', 'Statist', 'Statsr', 'Stats- & rättsvet', 'Sällsk', 'Teater', 'Teknol', 'Teol', 'Tidn', 'Tidningsväs', 'Tidskr', 'Utsikt'];
 
     controller.set('signumList', signumList);
+
+    Ember.run.later(function() {
+      Ember.$('#confirmModal').on('shown.bs.modal', function () {
+        Ember.$('#saveNextButton').focus();
+      });
+    });
 
   },
   actions: {
@@ -40,13 +48,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         return item.author || null;
       }).compact();
 
-      console.log(card.additional_authors);
       this.store.save('card', card).then(
         function(){
           if (target) {
             that.transitionTo(target);
           } else {
             that.refresh();
+            that.scrollToTop();
+            Ember.$('#formCol').scrollTop(0);
           }
         },
         function(){
