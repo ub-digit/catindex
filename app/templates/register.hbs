@@ -25,22 +25,14 @@
       {{else if showPseudonymCard}}
         {{partial "pseudonym-card-form"}}
       {{/if}}
-      
+
       <div class="pull-right">
         <button data-toggle="modal" data-target="#confirmModal" disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary">Klar</button>
       </div>
 
     </div>
 
-    <div class="image-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
-      {{#if model.ipac_note}}
-        <div class="alert alert-info" role="alert">{{model.ipac_note}}</div>
-      {{/if}}
-      <img src="{{imageUrl}}" id="card-image" class="img-responsive">
-      <div class="floating-toolbar {{if sidebarRight 'floating-toolbar-left'}}">
-        <button {{action 'toggleSidebar'}} class="btn btn-primary"><i class="fa fa-exchange fa-2x"></i></button>
-      </div>
-    </div>
+    {{partial "image-col"}}
 
   </div>
 </div>
