@@ -8,6 +8,9 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     },
     logout: function() {
       this.get('session').invalidate();
+    },
+    sessionAuthenticationFailed: function(error) {
+      this.controllerFor('login').set('error', error);      
     }
   }
 });
