@@ -1,19 +1,21 @@
-<div class="form-group">
+<div class="form-group {{if showLookupFieldValueError 'has-error'}}">
   <label for="lookupFieldValue">Huvuduppslag</label>
-  {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag"}}
+  {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag" focus-out="setLookupFieldValueTouched"}}
 </div>
+<div class="form-group {{if showLookupFieldTypeError 'has-error'}}">
 {{#radio-button
   value="author"
-  groupValue=model.lookup_field_type}}
+  groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
   Författare
 {{/radio-button}}
 {{#radio-button
   value="title"
-  groupValue=model.lookup_field_type}}
+  groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
   Titel
 {{/radio-button}}
+</div>
 <hr/>
-<div class="form-group">
+<div class="form-group {{if showReferenceTextError 'has-error'}}">
   <label for="referenceInput">Se</label>
-  {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning"}}
+  {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning" focus-out="setReferenceTextTouched"}}
 </div>

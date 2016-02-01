@@ -1,8 +1,8 @@
 
     <div class="form-inline">
       <label for="signumInput">Signum</label>
-      <div class="form-group">
-        {{#x-select value=model.classification class="form-control"}}
+      <div class="form-group {{if showClassificationError 'has-error'}}">
+        {{#catindex-x-select value=model.classification class="form-control" focus-out="setClassificationTouched"}}
         {{#x-option}}
         Välj...
         {{/x-option}}
@@ -11,7 +11,7 @@
         {{signumItem}}
         {{/x-option}}
         {{/each}}
-        {{/x-select}}
+        {{/catindex-x-select}}
       </div>
       <div class="checkbox">
         <label>
