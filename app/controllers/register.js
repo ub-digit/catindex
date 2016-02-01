@@ -89,16 +89,9 @@ export default Ember.Controller.extend({
     addAuthor: function() {
       this.get('model.authors').pushObject(Ember.Object.create({author: ""}));
     },
-    next: function() {
-      this.transitionToRoute('register');
-    },
-    cancel: function() {
-      this.transitionToRoute('home');
-    },
     toggleSidebar: function() {
       this.toggleProperty('sidebarRight');
     },
-
     setMainCard: function() {
       this.set('model.card_type', 'main');
     },
@@ -107,15 +100,6 @@ export default Ember.Controller.extend({
     },
     setPseudonymCard: function() {
       this.set('model.card_type', 'pseudonym');
-    },
-
-    showMainCard: function() {
-      this.set('showMainCard', true);
-      this.set('showReferenceCard', false);
-    },
-    showReferenceCard: function() {
-      this.set('showMainCard', false);
-      this.set('showReferenceCard', true);
     }
   }
 });

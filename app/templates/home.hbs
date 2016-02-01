@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li>{{#link-to 'home'}}Home{{/link-to}}</li>
-      <li>{{#link-to 'users'}}Användare{{/link-to}}</li>
-      <li>{{#link-to 'card' '1'}}Kort{{/link-to}}</li>
-      <li>{{#link-to 'list'}}List{{/link-to}}</li>
+      <li>{{#link-to 'users'}}Användare{{/link-to}}</li>      
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {{#if session.isAuthenticated}}
@@ -43,7 +41,7 @@
       {{#link-to 'register' class="btn btn-block btn-primary btn-lg"}}Indexera kort{{/link-to}}
     </div>
     <div class="col-sm-5 col-lg-3">
-      {{#link-to 'register' class="btn btn-block btn-primary btn-lg"}}Motläsa kort{{/link-to}}      
+      {{#link-to 'register' class="btn btn-block btn-primary btn-lg"}}Motläsa kort{{/link-to}}
     </div>
   </div>
 </div>
