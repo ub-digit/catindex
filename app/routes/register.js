@@ -28,7 +28,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   },
   actions: {
-    saveCard: function(card){
+    saveCard: function(card, target){
       var that = this;
 
       Ember.$('#confirmModal').modal('hide');
@@ -38,7 +38,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       card.additional_authors = card.authors.mapBy('author');
       this.store.save('card', card).then(
         function(){
-          that.refresh();
+          if (target) {
+            that.transitionTo(target);
+          } else {
+            that.refresh();
+          }          
         },
         function(){
 

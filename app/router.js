@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('new');
   });
   this.route('register');
+  this.route('review');
 });
 
 export default Router;
