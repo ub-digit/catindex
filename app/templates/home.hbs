@@ -21,18 +21,18 @@
   <div class="row stats-row">
     <div class="col-sm-5 col-sm-offset-1 col-lg-3 col-lg-offset-3 text-center">
       <span class="stats-label">Indexerade kort:</span>
-      <span class="stats-number">3264</span>
+      <span class="stats-number">{{model.statistics.primary_registered_card_count}}</span>
     </div>
     <div class="col-sm-5 col-lg-3 text-center">
       <span class="stats-label">Motlästa kort:</span>
-      <span class="stats-number">453</span>
+      <span class="stats-number">{{model.statistics.secondary_registered_card_count}}</span>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12 text-center">
       <h2>Vad vill du göra?</h2>
       <p class="lead">
-        Det finns <strong>37</strong> kort som andra har indexerat, som du kan motläsa.
+        Det finns <strong>{{model.statistics.available_for_secondary_registration_count}}</strong> kort som andra har indexerat, som du kan motläsa.
       </p>
     </div>
   </div>
@@ -41,7 +41,7 @@
       {{#link-to 'register' class="btn btn-block btn-primary btn-lg"}}Indexera kort{{/link-to}}
     </div>
     <div class="col-sm-5 col-lg-3">
-      {{#link-to 'review' class="btn btn-block btn-primary btn-lg"}}Motläsa kort{{/link-to}}
+      {{#link-to 'review' class="btn btn-block btn-primary btn-lg" disabled=reviewDisabled}}Motläsa kort{{/link-to}}
     </div>
   </div>
 </div>
