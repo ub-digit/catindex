@@ -1,1 +1,39 @@
-{{outlet}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
+
+      <div class="row cardTypeSelectorRow">
+        <div class="col-xs-12">
+          <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <button type="button" {{action 'setMainCard'}} class="btn {{if showMainCard 'btn-primary' 'btn-default'}}">Huvudkort</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" {{action 'setReferenceCard'}} class="btn {{if showReferenceCard 'btn-primary' 'btn-default'}}">Hänvisningskort</button>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" {{action 'setPseudonymCard'}} class="btn {{if showPseudonymCard 'btn-primary' 'btn-default'}}">Pseudonymkort</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{#if showMainCard}}
+        {{partial "main-card-form"}}
+      {{else if showReferenceCard}}
+        {{partial "reference-card-form"}}
+      {{else if showPseudonymCard}}
+        {{partial "pseudonym-card-form"}}
+      {{/if}}
+
+      <div class="pull-right">
+        <button data-toggle="modal" data-target="#confirmModal" disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary">Klar</button>
+      </div>
+
+    </div>
+
+    {{partial "image-col"}}
+
+  </div>
+</div>
+{{partial "register-confirm-modal"}}

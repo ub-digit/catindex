@@ -1,6 +1,5 @@
 @import "bower_components/bootstrap/less/bootstrap.less";
 @import "custom-variables.less";
-@import "gu-footer.less";
 @import "spinner.less";
 
 .input-group-addon {
@@ -36,9 +35,11 @@
 }
 
 .form-col {
-  .make-xs-column(4);
+  .make-xs-column(5);
+  .make-md-column(4);
   &.sidebar-right {
-    .make-xs-column-offset(8);
+    .make-xs-column-offset(7);
+    .make-md-column-offset(8);
     box-shadow: -2px 0px 8px 0 rgba(0,0,0,0.16), -4px 0 10px 0 rgba(0,0,0,0.12);
   }
   padding-bottom: 30px;
@@ -60,9 +61,11 @@
 
 .image-col {
   //background-color: @gray-darker;
-  .make-xs-column(8);
+  .make-xs-column(7);
+  .make-md-column(8);
   &.sidebar-left {
-    .make-xs-column-offset(4);
+    .make-xs-column-offset(5);
+    .make-md-column-offset(4);
   }
   max-height: 100%;
   overflow: hidden;
