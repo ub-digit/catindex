@@ -11,6 +11,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     controller.set('model', model);
 
+    // Reset all
+    controller.set('wasClassificationTouched', true);
+    controller.set('wasLookupFieldValueTouched', true);
+    controller.set('wasLookupFieldTypeTouched', true);
+    controller.set('wasTitleTouched', true);
+    controller.set('wasYearsTouched', true);
+    controller.set('wasReferenceTextTouched', true);
+    controller.set('wasProblemTouched', false);
+
     switch (model.collection) {
       case 'sv':
         model.is_sv = true;
@@ -19,6 +28,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         model.is_sv = false;
         break;
     }
+
+    model.year_from = model.year_from ? model.year_from.toString() : null;
+    model.year_to = model.year_to ? model.year_to.toString() : null;
 
     var authorsObj = model.additional_authors.map(function(item) {
       return {author: item};
@@ -31,5 +43,32 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     controller.set('signumList', signumList);
 
   },
+
+  actions: {
+    saveCard: function(card, target){
+      var that = this;
+
+      Ember.$('#confirmModal').modal('hide');
+
+      card.registration_type = 'secondary';
+      card.collection = (card.is_sv) ? 'sv' : null;
+      card.additional_authors = card.authors.map(function(item) {
+        return item.author || null;
+      }).compact();
+
+      this.store.save('card', card).then(
+        function(){
+          if (target) {
+            that.transitionTo(target);
+          } else {
+            that.refresh();
+          }
+        },
+        function(){
+
+        }
+      );
+    }
+  }
 
 });
