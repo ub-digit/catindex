@@ -85,6 +85,54 @@ export default Ember.Controller.extend({
     }
   }),
 
+  showClassificationError: Ember.computed('isClassificationValid', 'wasClassificationTouched', function() {
+    if(this.get('wasClassificationTouched') && !this.get('isClassificationValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  showLookupFieldValueError: Ember.computed('isLookupFieldValueValid', 'wasLookupFieldValueTouched', function() {
+    if(this.get('wasLookupFieldValueTouched') && !this.get('isLookupFieldValueValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  showLookupFieldTypeError: Ember.computed('isLookupFieldTypeValid', 'wasLookupFieldTypeTouched', function() {
+    if(this.get('wasLookupFieldTypeTouched') && !this.get('isLookupFieldTypeValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  showTitleError: Ember.computed('isTitleValid', 'wasTitleTouched', function() {
+    if(this.get('wasTitleTouched') && !this.get('isTitleValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  showYearsError: Ember.computed('areYearsValid', 'wasYearsTouched', function() {
+    if(this.get('wasYearsTouched') && !this.get('areYearsValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
+  showProblemError: Ember.computed('isProblemValid', 'wasProblemTouched', function() {
+    if(this.get('wasProblemTouched') && !this.get('isProblemValid')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
   actions: {
     addAuthor: function() {
       this.get('model.authors').pushObject(Ember.Object.create({author: ""}));
@@ -100,6 +148,24 @@ export default Ember.Controller.extend({
     },
     setPseudonymCard: function() {
       this.set('model.card_type', 'pseudonym');
+    },
+    setClassificationTouched: function() {
+      this.set('wasClassificationTouched', true);
+    },
+    setLookupFieldValueTouched: function() {
+      this.set('wasLookupFieldValueTouched', true);
+    },
+    setLookupFieldTypeTouched: function() {
+      this.set('wasLookupFieldTypeTouched', true);
+    },
+    setTitleTouched: function() {
+      this.set('wasTitleTouched', true);
+    },
+    setYearsTouched: function() {
+      this.set('wasYearsTouched', true);
+    },
+    setProblemTouched: function() {
+      this.set('wasProblemTouched', true);
     }
   }
 });
