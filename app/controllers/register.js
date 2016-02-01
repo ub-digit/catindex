@@ -150,6 +150,7 @@ export default Ember.Controller.extend({
       this.set('model.card_type', 'pseudonym');
     },
     setClassificationTouched: function() {
+      console.log("got focus-out");
       this.set('wasClassificationTouched', true);
     },
     setLookupFieldValueTouched: function() {
