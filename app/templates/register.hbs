@@ -39,8 +39,8 @@
         <div class="alert alert-info" role="alert">{{model.ipac_note}}</div>
       {{/if}}
       <img src="{{imageUrl}}" id="card-image" class="img-responsive">
-      <div class="toolbar-floating">
-        <button {{action 'toggleSidebar'}} class="btn btn-primary floating"><i class="fa fa-exchange fa-2x"></i></button>
+      <div class="floating-toolbar {{if sidebarRight 'floating-toolbar-left'}}">
+        <button {{action 'toggleSidebar'}} class="btn btn-primary"><i class="fa fa-exchange fa-2x"></i></button>
       </div>
     </div>
 

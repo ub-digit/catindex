@@ -3,6 +3,12 @@
 @import "gu-footer.less";
 @import "spinner.less";
 
+.input-group-addon {
+  label {
+    margin-bottom: 0;
+  }
+}
+
 
 .startpage-container {
   padding-top: 70px;
@@ -63,9 +69,15 @@
   .alert {
     margin-top: 10px;
   }
-  .toolbar-floating {
+  .floating-toolbar {
     position: fixed;
-    bottom: 20px;    
+    bottom: 20px;
+    z-index: 950;
+    right: 20px;
+    &.floating-toolbar-left {
+      left: 20px;
+    }
+
     button {
       box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.6);
     }

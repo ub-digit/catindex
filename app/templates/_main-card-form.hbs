@@ -42,7 +42,7 @@
         {{#if isLookupFieldTypeAuthor}}
         {{#each model.authors as |author|}}
           <div class="form-group">
-            {{input value=author.author type="text" class="form-control" placeholder="Författare"}}            
+            {{input value=author.author type="text" class="form-control" placeholder="Författare"}}
           </div>
         {{/each}}
         <div>
@@ -74,13 +74,15 @@
                 </span>
                 {{input value=model.year_to type="text" class="form-control" id="yearInput2" placeholder="År" disabled=model.no_year}}
                 <span class="input-group-addon">
+                  <label>
                   {{input type="checkbox" name="no_year" checked=model.no_year}} Utan år
+                  </label>
                 </span>
               </div>
             </div>
           </div>
         </div>
-
+        <hr/>
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
