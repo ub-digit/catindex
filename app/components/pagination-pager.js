@@ -1,5 +1,10 @@
 import Ember from 'ember';
 export default Ember.Component.extend({
+
+  tagName: 'nav',
+
+  classNames: ["center-block"],
+
   pageArray: function() {
     var pagePadding = 3; //Pages showing around current selection and at start/end
     var pArray = [];
