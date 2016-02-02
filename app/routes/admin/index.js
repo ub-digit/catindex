@@ -10,5 +10,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, IndicatesLoading, {
   },
   model: function(params) {
     return this.store.find('card', params);
+  },
+
+  actions: {
+    gotoCard: function(id) {
+      this.transitionTo('admin.edit', id);
+    }
   }
 });
