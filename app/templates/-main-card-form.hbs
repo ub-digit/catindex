@@ -1,7 +1,7 @@
 
     <div class="form-inline">
-      <label for="signumInput">Signum</label>
       <div class="form-group {{if showClassificationError 'has-error'}}">
+        <label for="signumInput">Signum</label>
         {{#catindex-x-select value=model.classification class="form-control" focus-out="setClassificationTouched"}}
         {{#x-option}}
         Välj...
@@ -19,7 +19,6 @@
         </label>
       </div>
     </div>
-    <hr/>
 
     <div class="form-group {{if showLookupFieldValueError 'has-error'}}">
       <label for="lookupFieldValue">Huvuduppslag</label>
@@ -50,8 +49,6 @@
         </div>
         {{/if}}
 
-        <hr/>
-
         <div class="form-group {{if showTitleError 'has-error'}}">
           <label for="titleInput">Titel</label>
           {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup focus-out="setTitleTouched"}}
@@ -59,14 +56,8 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <label>År</label>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-xs-12">
             <div class="form-group {{if showYearsError 'has-error'}}">
+              <label>År</label>
               <div class="input-group">
                 {{input value=model.year_from type="text" class="form-control" id="yearInput1" placeholder="År" disabled=model.no_year focus-out="setYearsTouched"}}
                 <span class="input-group-addon">
@@ -82,4 +73,3 @@
             </div>
           </div>
         </div>
-        

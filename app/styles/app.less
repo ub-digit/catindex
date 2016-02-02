@@ -3,7 +3,9 @@
 @import "spinner.less";
 
 .form-group.has-error {
-    background-color: #ffeeee;
+    label {
+      color: @state-danger-text;
+    }
 }
 
 .form-group.has-error > select {
@@ -38,7 +40,7 @@
 
 .users-container {
 
-  margin-top: 20px;
+  margin-top: 70px;
 
 }
 
@@ -50,6 +52,9 @@
     .make-xs-column-offset(7);
     .make-md-column-offset(8);
     box-shadow: -2px 0px 8px 0 rgba(0,0,0,0.16), -4px 0 10px 0 rgba(0,0,0,0.12);
+  }
+  .form-inline {
+    margin-bottom: 15px;
   }
   padding-bottom: 30px;
   position: fixed;

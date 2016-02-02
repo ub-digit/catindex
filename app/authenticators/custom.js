@@ -32,7 +32,8 @@ export default Base.extend({
           resolve({
             authenticated: true,
             token: token,
-            username: response.user.username
+            username: response.user.username,
+            isAdmin: (response.user.role === 'ADMIN')
           });
         });
       },
