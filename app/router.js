@@ -13,6 +13,10 @@ Router.map(function() {
   });
   this.route('register');
   this.route('review');
+  this.resource('admin', function() {
+    this.route('edit', { path: ':id' });
+  });
+
 });
 
 export default Router;
