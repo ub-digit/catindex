@@ -11,7 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, IndicatesLoading, {
   },
   model: function(params) {
     console.log(params);
-    return [{
+    var data = [{
       id: 1,
       ipac_image_id: 10023,
       primary_registrator_username: "tjosan",
@@ -26,6 +26,34 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, IndicatesLoading, {
       lookup_field_value: "B",
       title: "B is a buzzing thing"
     }];
+    if(!params.page) {
+      params.page = 1;
+    }
+    if(params.page === 1) {
+      data = [data[0]];
+      data.meta = {
+        pagination: {
+          pages: 2,
+          page: 1,
+          per_page: 1,
+          next: 2,
+          previous: null
+        }
+      };
+    }
+    if(params.page === 2) {
+      data = [data[1]];
+      data.meta = {
+        pagination: {
+          pages: 2,
+          page: 2,
+          per_page: 1,
+          next: null,
+          previous: 1
+        }
+      };
+    }
+    return data;
     return this.store.find('card', params);
   }
 });
