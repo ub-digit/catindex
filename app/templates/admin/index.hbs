@@ -1,19 +1,17 @@
 {{partial 'navbar'}}
+{{log model}}
 <div class="container admin-container">
   <div class="row">
     <div class="form-inline col-xs-12">
-      <label for="problem">Visa: 
-        {{#x-select value=problem class="form-control"}}
+      <label for="problem">Visa:</label>
+      {{#x-select value=problem class="form-control"}}
         {{#x-option value="all"}}Alla{{/x-option}}
         {{#x-option value="all_problems"}}Alla med problemstatus{{/x-option}}
         {{#x-option value="review_problems"}}Motlästa kort med problemstatus{{/x-option}}
         {{#x-option value="admin_problems"}}Administratörslästa kort med problemstatus{{/x-option}}
-        {{/x-select}}
-      </label>
-
-      <label for="image_id">Bildnr:
-        {{input value=image_id class="form-control"}}
-      </label>
+      {{/x-select}}
+      <label for="image_id">Bildnr:</label>
+      {{input value=image_id class="form-control"}}
     </div>
   </div>
   <div class="row">
@@ -39,6 +37,10 @@
             <td>{{card.lookup_field_value}}</td>
             <td>{{card.title}}</td>
           </tr>
+          {{else}}
+            <tr>
+              <td colspan="6" class="text-center"><em>Hittade inga kort</em></td>
+            </tr>
           {{/each}}
         </tbody>
       </table>

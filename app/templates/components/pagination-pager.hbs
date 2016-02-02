@@ -12,7 +12,7 @@
   {{/if}}
   {{#each pageArray as |page|}}
   {{#if page.spacer}}
-  <li class="disabled spacer">...</li>
+  <li class="disabled spacer"><span>...</span></li>
   {{else}}
   <li {{bind-attr class="page.active:active"}}>
     {{#link-to (query-params page=page.page)}}{{page.page}}{{/link-to}}
