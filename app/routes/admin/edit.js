@@ -9,6 +9,18 @@ export default Ember.Route.extend({
 
   },
 
+  setupController: function(controller, model) {
+
+    if (localStorage.getItem('sidebarSide') === 'right') {
+      controller.set('sidebarRight', true);
+    } else {
+      controller.set('sidebarRight', false);
+    }
+
+    controller.set('model', model);
+
+  },
+
   actions: {
 
     cancel: function() {

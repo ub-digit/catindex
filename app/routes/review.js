@@ -44,6 +44,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
 
     controller.set('signumList', signumList);
 
+    if (localStorage.getItem('sidebarSide') === 'right') {
+      controller.set('sidebarRight', true);
+    } else {
+      controller.set('sidebarRight', false);
+    }
+
     Ember.run.later(function() {
       Ember.$('#confirmModal').on('shown.bs.modal', function () {
         Ember.$('#saveNextButton').focus();

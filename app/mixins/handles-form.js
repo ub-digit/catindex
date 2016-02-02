@@ -153,6 +153,11 @@ export default Ember.Mixin.create({
     },
     toggleSidebar: function() {
       this.toggleProperty('sidebarRight');
+      if (this.get('sidebarRight')) {
+        localStorage.setItem('sidebarSide', 'right');
+      } else {
+        localStorage.setItem('sidebarSide', 'left');
+      }
     },
     setMainCard: function() {
       this.set('model.card_type', 'main');
