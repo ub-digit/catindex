@@ -1,21 +1,19 @@
 {{partial 'navbar'}}
 <div class="container admin-container">
   <div class="row">
-    <div class="form-inline">
-      {{#x-select value=level class="form-control"}}
-      {{#x-option value="all"}}Alla{{/x-option}}
-      {{#x-option value="primary"}}Indexerare{{/x-option}}
-      {{#x-option value="secondary"}}Motläsare{{/x-option}}
-      {{#x-option value="tertiary"}}Administratörer{{/x-option}}
-      {{/x-select}}
+    <div class="form-inline col-xs-12">
+      <label for="problem">Visa: 
+        {{#x-select value=problem class="form-control"}}
+        {{#x-option value="all"}}Alla{{/x-option}}
+        {{#x-option value="all_problems"}}Alla med problemstatus{{/x-option}}
+        {{#x-option value="review_problems"}}Motlästa kort med problemstatus{{/x-option}}
+        {{#x-option value="admin_problems"}}Administratörslästa kort med problemstatus{{/x-option}}
+        {{/x-select}}
+      </label>
 
-      {{#x-select value=problem class="form-control"}}
-      {{#x-option value="all"}}Alla{{/x-option}}
-      {{#x-option value="no_problem"}}Utan problem{{/x-option}}
-      {{#x-option value="only_problem"}}Med problem{{/x-option}}
-      {{/x-select}}
-
-      {{input value=image_id class="form-control"}}
+      <label for="image_id">Bildnr:
+        {{input value=image_id class="form-control"}}
+      </label>
     </div>
   </div>
   <div class="row">

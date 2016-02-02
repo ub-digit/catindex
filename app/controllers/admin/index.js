@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ["page", "level", "problem", "image_id"],
-  level: "secondary",
-  problem: "only_problem",
+  queryParams: ["page", "problem", "image_id"],
+  problem: "all_problems",
   image_id: "",
   page: 1
 });
+
