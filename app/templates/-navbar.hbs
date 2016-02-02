@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li>{{#link-to 'home'}}Home{{/link-to}}</li>
+      {{#if session.content.secure.isAdmin}}
+        <li>{{#link-to 'users'}}Användare{{/link-to}}</li>
+      {{/if}}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {{#if session.isAuthenticated}}
+        {{session.content.secure.role}}
+        <p class="navbar-text">Inloggad som {{session.content.secure.username}}</p>
+        <li><a href="#" {{action 'logout'}}>Logga ut</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
