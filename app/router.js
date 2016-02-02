@@ -16,7 +16,6 @@ Router.map(function() {
   this.resource('admin', function() {
     this.route('edit', { path: ':id' });
   });
-
 });
 
 export default Router;
