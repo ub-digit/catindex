@@ -13,6 +13,8 @@ Router.map(function() {
   });
   this.route('register');
   this.route('review');
+  this.resource('admin', function() {
+  });
 });
 
 export default Router;

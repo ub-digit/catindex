@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="form-inline">
+      {{#x-select value=level class="form-control"}}
+      {{#x-option value="all"}}Alla{{/x-option}}
+      {{#x-option value="primary"}}Indexerare{{/x-option}}
+      {{#x-option value="secondary"}}Motläsare{{/x-option}}
+      {{#x-option value="tertiary"}}Administratörer{{/x-option}}
+      {{/x-select}}
+
+      {{#x-select value=problem class="form-control"}}
+      {{#x-option value="all"}}Alla{{/x-option}}
+      {{#x-option value="no_problem"}}Utan problem{{/x-option}}
+      {{#x-option value="only_problem"}}Med problem{{/x-option}}
+      {{/x-select}}
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Bild-nummer</th>
+          <th>Indexerare</th>
+          <th>Motläsare</th>
+          <th>Huvuduppslag</th>
+          <th>Titel</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |card|}}
+        <tr> 
+          <th>{{card.id}}</th>
+          <th>{{card.ipac_image_id}}</th>
+          <th>{{card.primary_registrator_username}}</th>
+          <th>{{card.secondary_registrator_username}}</th>
+          <th>{{card.lookup_field_value}}</th>
+          <th>{{card.title}}</th>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
