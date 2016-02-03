@@ -7,6 +7,7 @@ export default Ember.Mixin.create({
   showPseudonymCard: Ember.computed.equal('model.card_type', 'pseudonym'),
 
   isLookupFieldTypeAuthor: Ember.computed.equal('model.lookup_field_type', 'author'),
+  isLookupFieldTypeTitle: Ember.computed.equal('model.lookup_field_type', 'title'),
 
   imageUrl: Ember.computed('model', function() {
     return 'http://ipac.ub.gu.se/katalog1957/PictureLoader?Antialias=ON&ImageId=' + this.get('model.ipac_image_id') + '&Scale=1';
