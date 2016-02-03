@@ -52,7 +52,32 @@ export default Ember.Route.extend({
   },
 
   actions: {
+    saveCard: function(card, target){
+      var that = this;
 
+      Ember.$('#confirmModal').modal('hide');
+
+      card.registration_type = 'tertiary';
+      card.collection = (card.is_sv) ? 'sv' : null;
+      card.additional_authors = card.authors.map(function(item) {
+        return item.author || null;
+      }).compact();
+
+      this.store.save('card', card).then(
+        function(){
+          if (target) {
+            that.transitionTo(target);
+          } else {
+            that.refresh();
+            that.scrollToTop();
+            Ember.$('#formCol').scrollTop(0);
+          }
+        },
+        function(){
+
+        }
+      );
+    },
     cancel: function() {
       this.transitionTo('admin');
     }
