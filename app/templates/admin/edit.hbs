@@ -32,11 +32,11 @@
 
               <div class="form-group">
                 <label for="primaryProblemInput">Indexeringsproblem</label>
-                {{textarea rows="3" value=model.secondary_registrator_problem type="text" class="form-control" id="primaryProblemInput" placeholder="Problembeskrivning" focus-out="setProblemTouched"}}
+                <p>{{#if model.primary_registrator_problem}}{{model.primary_registrator_problem}}{{else}}<em>Inget problem angivet</em>{{/if}}</p>
               </div>
               <div class="form-group">
                 <label for="secondaryProblemInput">Motläsningsproblem</label>
-                {{textarea rows="3" value=model.secondary_registrator_problem type="text" class="form-control" id="secondaryProblemInput" placeholder="Problembeskrivning" focus-out="setProblemTouched"}}
+                <p>{{#if model.secondary_registrator_problem}}{{model.secondary_registrator_problem}}{{else}}<em>Inget problem angivet</em>{{/if}}</p>
               </div>
               <div class="form-group">
                 <label for="tertiaryProblemInput">Administratörsproblem</label>
