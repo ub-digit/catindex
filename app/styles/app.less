@@ -2,6 +2,14 @@
 @import "custom-variables.less";
 @import "spinner.less";
 
+@media (min-width: 1200px) {
+    #confirmModal {
+        .modal-lg {
+            width: 1170px !important;
+        }
+    }
+}
+
 .form-group.has-error {
     label {
       color: @state-danger-text;
