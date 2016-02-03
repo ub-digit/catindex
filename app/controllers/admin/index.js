@@ -11,5 +11,13 @@ export default Ember.Controller.extend({
   }),
   observerProblemFilter: Ember.observer('problem', function() {
     this.set('image_id', '');
+  }),
+  isIPACLookupView: Ember.computed('problem', function() {
+    if((this.get('problem') === 'indexed_ipac_lookup_cards') ||
+       (this.get('problem') === 'ipac_lookup_cards_with_mismatch')) {
+      return true;
+    } else {
+      return false;
+    }
   })
 });

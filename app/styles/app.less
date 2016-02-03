@@ -16,6 +16,17 @@
     }
 }
 
+.card-row {
+    &.lookup-mismatch {
+        border-left: 5px solid red;
+        border-right: 5px solid red;
+    }
+    &.lookup-match {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+    }
+}
+
 .form-group.has-error > select {
     background-color: #ffeeee;
 }

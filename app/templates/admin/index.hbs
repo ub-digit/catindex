@@ -9,6 +9,8 @@
         {{#x-option value="all_problems"}}Alla med problemstatus{{/x-option}}
         {{#x-option value="review_problems"}}Motlästa kort med problemstatus{{/x-option}}
         {{#x-option value="admin_problems"}}Administratörslästa kort med problemstatus{{/x-option}}
+        {{#x-option value="indexed_ipac_lookup_cards"}}Indexerade kort med IPAC-uppslag{{/x-option}}
+        {{#x-option value="ipac_lookup_cards_with_mismatch"}}Kort där IPAC-uppslag inte överensstämmer med huvuduppslag{{/x-option}}
       {{/x-select}}
       <label for="image_id">Bild-nr:</label>
       {{input value=image_id class="form-control"}}
@@ -19,29 +21,55 @@
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Bild-nummer</th>
-            <th>Indexerare</th>
-            <th>Motläsare</th>
-            <th>Huvuduppslag</th>
-            <th>Titel</th>
-            <th></th>
+            {{#if isIPACLookupView}}
+              <th>ID</th>
+              <th>Bild-nummer</th>
+              <th>Uppslag (indexering)</th>
+              <th>Uppslag (motläsning)</th>
+              <th>Uppslag (admin)</th>
+              <th>IPAC-uppslag</th>
+              <th>Skillnad</th>
+              <th></th>
+            {{else}}
+              <th>ID</th>
+              <th>Bild-nummer</th>
+              <th>Indexerare</th>
+              <th>Motläsare</th>
+              <th>Huvuduppslag</th>
+              <th>Titel</th>
+              <th>IPAC-uppslag</th>
+              <th></th>
+            {{/if}}
           </tr>
         </thead>
         <tbody>
           {{#each model as |card|}}
-          <tr class="card-row">
-            <td>{{card.id}}</td>
-            <td>{{card.ipac_image_id}}</td>
-            <td>{{card.primary_registrator_username}}</td>
-            <td>{{card.secondary_registrator_username}}</td>
-            <td>{{card.lookup_field_value}}</td>
-            <td>{{card.title}}</td>
-            <td>{{#link-to 'admin.edit' card.ipac_image_id}}Redigera{{/link-to}}</td>
-          </tr>
+          {{#if isIPACLookupView}}
+            <tr class="card-row {{if card.ipac_lookup_mismatch 'lookup-mismatch' 'lookup-match'}}">
+              <td>{{card.id}}</td>
+              <td>{{card.ipac_image_id}}</td>
+              <td>{{card.primary_registrator_values.lookup_field_value}}</td>
+              <td>{{card.secondary_registrator_values.lookup_field_value}}</td>
+              <td>{{card.tertiary_registrator_values.lookup_field_value}}</td>
+              <td>{{card.ipac_lookup}}</td>
+              <td align="right">{{card.difference}}</td>
+              <td>{{#link-to 'admin.edit' card.ipac_image_id}}Redigera{{/link-to}}</td>
+            </tr>
+          {{else}}
+            <tr class="card-row">
+              <td>{{card.id}}</td>
+              <td>{{card.ipac_image_id}}</td>
+              <td>{{card.primary_registrator_username}}</td>
+              <td>{{card.secondary_registrator_username}}</td>
+              <td>{{card.lookup_field_value}}</td>
+              <td>{{card.title}}</td>
+              <td>{{card.ipac_lookup}}</td>
+              <td>{{#link-to 'admin.edit' card.ipac_image_id}}Redigera{{/link-to}}</td>
+            </tr>
+          {{/if}}
           {{else}}
             <tr>
-              <td colspan="6" class="text-center"><em>Hittade inga kort</em></td>
+              <td colspan="7" class="text-center"><em>Hittade inga kort</em></td>
             </tr>
           {{/each}}
         </tbody>
