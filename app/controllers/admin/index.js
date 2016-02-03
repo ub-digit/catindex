@@ -9,11 +9,6 @@ export default Ember.Controller.extend({
   observesFilter: Ember.observer('problem', 'image_id', function() {
     this.set('page', 1);
   }),
-  observesImageId: Ember.observer('image_id', function() {
-    if (this.get('image_id')) {
-      this.set('problem', null);
-    }
-  }),
   observerProblemFilter: Ember.observer('problem', function() {
     this.set('image_id', '');
   })

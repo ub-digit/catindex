@@ -25,17 +25,19 @@
             <th>Motläsare</th>
             <th>Huvuduppslag</th>
             <th>Titel</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {{#each model as |card|}}
-          <tr class="card-row" {{action 'gotoCard' card.ipac_image_id}}>
+          <tr class="card-row">
             <td>{{card.id}}</td>
             <td>{{card.ipac_image_id}}</td>
             <td>{{card.primary_registrator_username}}</td>
             <td>{{card.secondary_registrator_username}}</td>
             <td>{{card.lookup_field_value}}</td>
             <td>{{card.title}}</td>
+            <td>{{#link-to 'admin.edit' card.ipac_image_id}}Redigera{{/link-to}}</td>
           </tr>
           {{else}}
             <tr>
