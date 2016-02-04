@@ -191,8 +191,12 @@ export default Ember.Mixin.create({
     },
     setProblemTouched: function() {
       this.set('wasProblemTouched', true);
+    },
+    setEditMode: function() {
+      this.set('editMode', true);
+    },
+    setViewMode: function() {
+      this.set('editMode', false);
     }
   }
-
-
 });

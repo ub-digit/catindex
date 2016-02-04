@@ -14,13 +14,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
     controller.set('model', model);
 
     // Reset all
-    controller.set('wasClassificationTouched', false);
-    controller.set('wasLookupFieldValueTouched', false);
-    controller.set('wasLookupFieldTypeTouched', false);
-    controller.set('wasTitleTouched', false);
-    controller.set('wasYearsTouched', false);
-    controller.set('wasReferenceTextTouched', false);
-    controller.set('wasProblemTouched', false);
+    controller.set('wasClassificationTouched', true);
+    controller.set('wasLookupFieldValueTouched', true);
+    controller.set('wasLookupFieldTypeTouched', true);
+    controller.set('wasTitleTouched', true);
+    controller.set('wasYearsTouched', true);
+    controller.set('wasReferenceTextTouched', true);
+    controller.set('wasProblemTouched', true);
+
+    controller.set('editMode', false);
 
     switch (model.collection) {
       case 'sv':
