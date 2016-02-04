@@ -195,7 +195,7 @@ export default Ember.Mixin.create({
     setEditMode: function() {
       this.set('editMode', true);
     },
-    setViewMode: function() {
+    setConfirmMode: function() {
       this.set('editMode', false);
     }
   }
