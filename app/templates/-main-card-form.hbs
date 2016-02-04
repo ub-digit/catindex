@@ -22,6 +22,14 @@
 
     <div class="form-group {{if showLookupFieldValueError 'has-error'}}">
       <label for="lookupFieldValue">Huvuduppslag</label>
+      {{#if showPreviousCardLookupValue}}
+      <div class="pull-right">
+        <em>Föregående kort:</em>
+        <a href="#" {{action 'usePreviousLookup'}}>
+        {{model.previous_card_lookup_value}}
+        </a>
+      </div>
+      {{/if}}
       {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag" focus-out="setLookupFieldValueTouched"}}
     </div>
 
