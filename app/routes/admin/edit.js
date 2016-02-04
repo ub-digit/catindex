@@ -21,6 +21,8 @@ export default Ember.Route.extend({
     controller.set('wasReferenceTextTouched', false);
     controller.set('wasProblemTouched', false);
 
+    controller.set('editMode', true);
+
     switch (model.collection) {
       case 'sv':
         model.is_sv = true;
