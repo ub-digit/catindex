@@ -23,7 +23,7 @@
     <div class="form-group {{if showLookupFieldValueError 'has-error'}}">
       <label for="lookupFieldValue">Huvuduppslag</label>
       {{#if showPreviousCardLookupValue}}
-      <div class="pull-right">
+      <div class="pull-right previous-card-lookup">
         <em>Föregående kort:</em>
         <a href="#" {{action 'usePreviousLookup'}}>
         {{model.previous_card_lookup_value}}
