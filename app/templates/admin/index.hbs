@@ -1,5 +1,4 @@
 {{partial 'navbar'}}
-{{log model}}
 <div class="container admin-container">
   <div class="row">
     <div class="form-inline col-xs-12">
@@ -14,6 +13,9 @@
       {{/x-select}}
       <label for="image_id">Bild-nr:</label>
       {{input value=image_id class="form-control"}}
+      <div class="pull-right">
+        <button {{action 'fetchSampleCard'}} class="btn btn-default">Stickprov</button>
+      </div>
     </div>
   </div>
   <div class="row">

@@ -1,10 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
-
   model: function(params) {
-    console.log(params);
     return this.store.find('card', params);
   },
 
@@ -21,7 +18,11 @@ export default Ember.Route.extend({
     controller.set('wasReferenceTextTouched', false);
     controller.set('wasProblemTouched', false);
 
-    controller.set('editMode', true);
+    if(controller.get('viewMode') === null) {
+      controller.set('editMode', true);
+    } else {
+      controller.set('editMode', false);
+    }
 
     switch (model.collection) {
       case 'sv':

@@ -15,6 +15,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, IndicatesLoading, {
   actions: {
     gotoCard: function(id) {
       this.transitionTo('admin.edit', id);
+    },
+    fetchSampleCard: function() {
+      var that = this;
+      this.store.find('card', 'sample').then(function(card) {
+        that.transitionTo('admin.edit', card, {queryParams: {viewMode: false}});
+      }, function() {
+        alert("Inga poster finns för stickprov");
+      });
     }
   }
 });
