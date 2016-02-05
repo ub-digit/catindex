@@ -238,6 +238,9 @@ export default Ember.Mixin.create({
     },
     setConfirmMode: function() {
       this.set('editMode', false);
+      Ember.run.later(function() {
+        Ember.$('#saveNextButton').focus();
+      });
     }
   }
 });

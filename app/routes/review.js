@@ -48,12 +48,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
       controller.set('sidebarRight', false);
     }
 
-    Ember.run.later(function() {
-      Ember.$('#confirmModal').on('shown.bs.modal', function () {
-        Ember.$('#saveNextButton').focus();
-      });
-    });
-
   },
 
   actions: {
