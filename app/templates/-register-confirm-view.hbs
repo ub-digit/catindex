@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-xs-12">
+    <dl class="dl-horizontal">
+      {{#if showMainCard}}
+        <dt>Typ av kort</dt>
+        <dd>Huvudkort</dd>
+        <dt>Signum</dt>
+        <dd>{{model.classification}} {{#if model.is_sv}}(Sv){{/if}}</dd>
+          <dt>Huvuduppslag</dt>
+          <dd>{{model.lookup_field_value}}</dd>
+          <dt>Typ av uppslag</dt>
+          <dd>{{#if isLookupFieldTypeAuthor}}Författare{{else if isLookupFieldTypeTitle}}Titel{{/if}}</dd>
+            {{#if isLookupFieldTypeAuthor}}
+              <dt>Ytterligare författare</dt>
+              <dd>
+                <ul class="list-unstyled">
+                  {{#each model.authors as |author|}}
+                  <li>{{author.author}}</li>
+                  {{/each}}
+                </ul>
+              </dd>
+            {{/if}}
+            <dt>Titel</dt>
+            <dd>{{model.title}}</dd>
+            <dt>År</dt>
+            {{#if model.no_year}}
+              <dd>UÅ</dd>
+            {{else}}
+              <dd>{{model.year_from}}{{#if model.year_to}}-{{model.year_to}}{{/if}}</dd>
+            {{/if}}
+            {{else if showReferenceCard}}
+            <dt>Typ av kort</dt>
+            <dd>Hänvisningskort</dd>
+            <dt>Huvuduppslag</dt>
+            <dd>{{model.lookup_field_value}}</dd>
+            <dt>Typ av uppslag</dt>
+            <dd>{{#if isLookupFieldTypeAuthor}}Författare{{else}}Titel{{/if}}</dd>
+              <dt>Se</dt>
+              <dd>{{model.reference_text}}</dd>
+              {{else if showPseudonymCard}}
+              <dt>Typ av kort</dt>
+              <dd>Pseudonymkort</dd>
+              <dt>Pseudonym</dt>
+              <dd>{{model.lookup_field_value}}</dd>
+              <dt>Verklig författare</dt>
+              <dd>{{model.reference_text}}</dd>
+      {{/if}}
+      <hr/>
+      <dt>Problem</dt>
+      <dd>{{model.primary_registrator_problem}}</dd>
+    </dl>
+    <hr/>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="pull-left">
+          <button type="button" class="btn btn-default" {{action 'setEditMode'}}>Redigera</button>
+        </div>
+        <div class="pull-right">
+          <button {{action 'saveCard' model 'home'}} type="button" disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary">Spara + avsluta</button>
+          <button id="saveNextButton" {{action 'saveCard' model}} disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-success">Spara + nytt kort</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

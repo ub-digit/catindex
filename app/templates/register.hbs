@@ -2,6 +2,7 @@
   <div class="row">
     <div id="formCol" class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
       <h3>Indexering</h3>
+      {{#if editMode}}
       <div class="row cardTypeSelectorRow">
         <div class="col-xs-12">
           <div class="btn-group btn-group-justified" role="group">
@@ -39,13 +40,14 @@
       </div>
 
       <div class="pull-right">
-        <button data-toggle="modal" data-target="#confirmModal" disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary">Klar</button>
+        <button disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary" {{action 'setConfirmMode'}}>Klar</button>
       </div>
-
+      {{else}}
+        {{partial "register-confirm-view"}}
+      {{/if}}
     </div>
 
     {{partial "image-col"}}
 
   </div>
 </div>
-{{partial "register-confirm-modal"}}

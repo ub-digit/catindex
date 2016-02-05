@@ -13,6 +13,8 @@ export default Ember.Mixin.create({
     return 'http://ipac.ub.gu.se/katalog1957/PictureLoader?Antialias=ON&ImageId=' + this.get('model.ipac_image_id') + '&Scale=1';
   }),
 
+  showPreviousCardLookupValue: Ember.computed(function() { return false; }),
+
   // Validation properties for main card
 
   isClassificationValid: Ember.computed.notEmpty('model.classification'),
@@ -189,8 +191,12 @@ export default Ember.Mixin.create({
     },
     setProblemTouched: function() {
       this.set('wasProblemTouched', true);
+    },
+    setEditMode: function() {
+      this.set('editMode', true);
+    },
+    setConfirmMode: function() {
+      this.set('editMode', false);
     }
   }
-
-
 });
