@@ -51,8 +51,12 @@ export default Ember.Mixin.create({
 
   isLookupFieldTypeValid: Ember.computed.notEmpty('model.lookup_field_type'),
 
-  isTitleValid: Ember.computed('model.card_type', 'model.title', function() {
+  isTitleValid: Ember.computed('model.card_type', 'model.title', 'model.lookup_field_type', function() {
     if (this.get('model.card_type') === 'main' && !this.get('model.title.length')) {
+      return false;
+    } else if (this.get('model.card_type') === 'reference' && 
+               this.get('model.lookup_field_type') === 'title' &&
+               !this.get('model.title.length')) {
       return false;
     } else {
       return true;
@@ -100,7 +104,13 @@ export default Ember.Mixin.create({
       } else {
         return false;
       }
-    } else if (this.get('model.card_type') === 'reference' || this.get('model.card_type') === 'pseudonym') {
+    } else if (this.get('model.card_type') === 'reference') {
+      if (this.get('isLookupFieldValueValid') && this.get('isReferenceTextValid') && this.get('isTitleValid')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if(this.get('model.card_type') === 'pseudonym') {
       if (this.get('isLookupFieldValueValid') && this.get('isReferenceTextValid')) {
         return true;
       } else {

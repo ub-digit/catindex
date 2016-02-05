@@ -40,6 +40,10 @@
             <dd>{{model.lookup_field_value}}</dd>
             <dt>Typ av uppslag</dt>
             <dd>{{#if isLookupFieldTypeAuthor}}Författare{{else if isLookupFieldTypeTitle}}Titel{{/if}}</dd>
+              {{#if isLookupFieldTypeTitle}}
+                <dt>Titel</dt>
+                <dd>{{model.title}}</dd>
+              {{/if}}
               <dt>Se</dt>
               <dd>{{model.reference_text}}</dd>
               {{else if showPseudonymCard}}

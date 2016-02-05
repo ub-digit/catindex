@@ -14,6 +14,13 @@
   Titel
 {{/radio-button}}
 </div>
+{{#if isLookupFieldTypeTitle}}
+<div class="form-group {{if showTitleError 'has-error'}}">
+  <label for="titleInput">Titel</label>
+  {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup focus-out="setTitleTouched"}}
+</div>
+{{/if}}
+
 <hr/>
 <div class="form-group {{if showReferenceTextError 'has-error'}}">
   <label for="referenceInput">Se</label>
