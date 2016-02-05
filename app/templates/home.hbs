@@ -6,15 +6,74 @@
     </div>
   </div>
   <div class="row stats-row">
-    <div class="col-sm-5 col-sm-offset-1 col-lg-3 col-lg-offset-3 text-center">
+    <div class="col-sm-4 text-center">
+      <span class="stats-label">Kort totalt:</span>
+      <span class="stats-number">{{model.statistics.totals.card_count}}</span>
+    </div>
+    <div class="col-sm-4 text-center">
       <span class="stats-label">Indexerade kort:</span>
+      <span class="stats-number">{{indexedCards}}</span>
+    </div>
+    <div class="col-sm-4 text-center">
+      <span class="stats-label">Kort kvar:</span>
+      <span class="stats-number">{{model.statistics.totals.not_started_card_count}}</span>
+    </div>
+  </div>
+  {{#if model.statistics.totals}}
+  <div class="row stats-row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{indexedCards}}" aria-valuemin="0" aria-valuemax="{{model.statistics.totals.card_count}}" style="{{progressbarWidthStyle}}">
+          <span class="sr-only">60% Complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row stats-row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <span class="stats-label">Indexerade:</span>
+          <span class="stats-number">{{model.statistics.totals.primary_ended_card_count}}</span>
+        </div>
+        <div class="col-sm-4 text-center">
+          <span class="stats-label">Motlästa:</span>
+          <span class="stats-number">{{model.statistics.totals.secondary_ended_card_count}}</span>
+        </div>
+        <div class="col-sm-4 text-center">
+          <span class="stats-label">Administrationslästa:</span>
+          <span class="stats-number">{{model.statistics.totals.tertiary_ended_card_count}}</span>
+        </div>
+      </div>
+      <hr/>    
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <span class="stats-label">Huvudkort:</span>
+          <span class="stats-number">{{model.statistics.totals.main_card_count}}</span>
+        </div>
+        <div class="col-sm-4 text-center">
+          <span class="stats-label">Hänvisningskort:</span>
+          <span class="stats-number">{{model.statistics.totals.reference_card_count}}</span>
+        </div>
+        <div class="col-sm-4 text-center">
+          <span class="stats-label">Pseudonymkort:</span>
+          <span class="stats-number">{{model.statistics.totals.pseudonym_card_count}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="row stats-row">
+    <div class="col-sm-5 col-sm-offset-1 col-lg-3 col-lg-offset-3 text-center">
+      <span class="stats-label">Kort indexerade av dig:</span>
       <span class="stats-number">{{model.statistics.primary_registered_card_count}}</span>
     </div>
     <div class="col-sm-5 col-lg-3 text-center">
-      <span class="stats-label">Motlästa kort:</span>
+      <span class="stats-label">Kort motlästa av dig:</span>
       <span class="stats-number">{{model.statistics.secondary_registered_card_count}}</span>
     </div>
   </div>
+  {{/if}}
   <div class="row">
     <div class="col-xs-12 text-center">
       <h2>Vad vill du göra?</h2>
