@@ -10,6 +10,15 @@ export default Ember.Controller.extend({
   progressbarWidthStyle: Ember.computed('model.statistics.totals.card_count', 'indexedCards', function() {
     var perc = this.get('indexedCards') / this.get('model.statistics.totals.card_count') * 100;
     return 'width: ' + perc + '%;';
+  }),
+
+  indexTimeString: Ember.computed('model.statistics.totals.primary_ended_average_time', function() {
+    var duration = moment.duration(this.get('model.statistics.totals.primary_ended_average_time'));
+    return moment(duration.asMilliseconds()).format('mm:ss');
+  }),
+  reviewTimeString: Ember.computed('model.statistics.totals.secondary_ended_average_time', function() {
+    var duration = moment.duration(this.get('model.statistics.totals.secondary_ended_average_time'));
+    return moment(duration.asMilliseconds()).format('mm:ss');
   })
 
 });

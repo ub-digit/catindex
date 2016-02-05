@@ -60,6 +60,17 @@
           <span class="stats-number">{{model.statistics.totals.pseudonym_card_count}}</span>
         </div>
       </div>
+      <hr/>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <span class="stats-label">Genomsnittling tid för indexering:</span>
+          <span class="stats-number">{{indexTimeString}}</span>
+        </div>
+        <div class="col-xs-6 text-center">
+          <span class="stats-label">Genomsnittling tid för motläsning:</span>
+          <span class="stats-number">{{reviewTimeString}}</span>
+        </div>
+      </div>
     </div>
   </div>
   {{else}}
