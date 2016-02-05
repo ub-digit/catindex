@@ -13,7 +13,7 @@ export default Ember.Controller.extend(HandlesForm, {
     }
     return false;
   }),
-  
+
   actions: {
     usePreviousLookup: function() {
       this.set('model.lookup_field_value', this.get('model.previous_card_lookup_value'));

@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Mixin.create({
 
+  application: Ember.inject.controller(),
+
   showMainCard: Ember.computed.equal('model.card_type', 'main'),
   showReferenceCard: Ember.computed.equal('model.card_type', 'reference'),
   showPseudonymCard: Ember.computed.equal('model.card_type', 'pseudonym'),
@@ -45,7 +47,7 @@ export default Ember.Mixin.create({
         isValid = false;
         that.get('model.authors').set(i + '.valid', false);
       }
-    }); 
+    });
     return isValid;
   }),
 
@@ -54,7 +56,7 @@ export default Ember.Mixin.create({
   isTitleValid: Ember.computed('model.card_type', 'model.title', 'model.lookup_field_type', function() {
     if (this.get('model.card_type') === 'main' && !this.get('model.title.length')) {
       return false;
-    } else if (this.get('model.card_type') === 'reference' && 
+    } else if (this.get('model.card_type') === 'reference' &&
                this.get('model.lookup_field_type') === 'title' &&
                !this.get('model.title.length')) {
       return false;
