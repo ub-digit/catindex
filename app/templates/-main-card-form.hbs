@@ -48,7 +48,7 @@
     </div>
         {{#if isLookupFieldTypeAuthor}}
         {{#each model.authors as |author|}}
-          <div class="form-group">
+          <div class="form-group {{unless author.valid 'has-error'}}">
             {{input value=author.author type="text" class="form-control" placeholder="Författare"}}
           </div>
         {{/each}}

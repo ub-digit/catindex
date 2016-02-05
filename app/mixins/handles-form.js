@@ -19,7 +19,35 @@ export default Ember.Mixin.create({
 
   isClassificationValid: Ember.computed.notEmpty('model.classification'),
 
-  isLookupFieldValueValid: Ember.computed.notEmpty('model.lookup_field_value'),
+  //isLookupFieldValueValid: Ember.computed.notEmpty('model.lookup_field_value'),
+  isLookupFieldValueValid: Ember.computed('model.lookup_field_value', 'model.lookup_field_type', function() {
+    if (this.get('model.lookup_field_type')==='author') {
+      if (this.get('model.lookup_field_value') && this.get('model.lookup_field_value').match(/^[^\[\]\/]+$/)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      if (this.get('model.lookup_field_value.length')) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }),
+
+  isAdditionalAuthorsValid: Ember.computed('model.authors.@each.author', function() {
+    var isValid = true;
+    var that = this;
+    this.get('model.authors').forEach(function(author, i) {
+      that.get('model.authors').set(i + '.valid', true);
+      if (author.author && !author.author.match(/^[^\[\]\/]+$/)) {
+        isValid = false;
+        that.get('model.authors').set(i + '.valid', false);
+      }
+    }); 
+    return isValid;
+  }),
 
   isLookupFieldTypeValid: Ember.computed.notEmpty('model.lookup_field_type'),
 
@@ -59,12 +87,13 @@ export default Ember.Mixin.create({
 
   // General validation properties
 
-  isCardValid: Ember.computed('model.card_type', 'isClassificationValid', 'isLookupFieldValueValid', 'isLookupFieldTypeValid', 'isTitleValid', 'areYearsValid', 'isReferenceTextValid', function() {
+  isCardValid: Ember.computed('model.card_type', 'isClassificationValid', 'isLookupFieldValueValid', 'isLookupFieldTypeValid', 'isTitleValid', 'areYearsValid', 'isReferenceTextValid', 'isAdditionalAuthorsValid', function() {
     if (this.get('model.card_type') === 'main') {
       if (
         this.get('isClassificationValid') &&
         this.get('isLookupFieldValueValid') &&
         this.get('isLookupFieldTypeValid') &&
+        this.get('isAdditionalAuthorsValid') &&
         this.get('isTitleValid') &&
         this.get('areYearsValid')) {
         return true;
@@ -152,7 +181,7 @@ export default Ember.Mixin.create({
 
   actions: {
     addAuthor: function() {
-      this.get('model.authors').pushObject(Ember.Object.create({author: ""}));
+      this.get('model.authors').pushObject(Ember.Object.create({author: "", valid: true}));
     },
     toggleSidebar: function() {
       this.toggleProperty('sidebarRight');
