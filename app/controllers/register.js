@@ -17,6 +17,7 @@ export default Ember.Controller.extend(HandlesForm, {
   actions: {
     usePreviousLookup: function() {
       this.set('model.lookup_field_value', this.get('model.previous_card_lookup_value'));
+      Ember.$('#lookupFieldValue').focus();
     }
   }
 });
