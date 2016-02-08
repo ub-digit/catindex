@@ -64,7 +64,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
       this.store.save('card', card).then(
         function(response){
 
-          var diff = moment(response.primary_registrator_end).diff(moment(response.primary_registrator_start), 'seconds');          
+          var diff = moment(response.secondary_registrator_end).diff(moment(response.secondary_registrator_start), 'seconds');          
           that.pushEventToDataLayer('card', 'review', response.card_type, diff);
 
           if (target) {
