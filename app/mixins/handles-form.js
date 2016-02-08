@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import KnowsAboutDataLayer from 'catindex/mixins/knows-about-data-layer';
 
-export default Ember.Mixin.create({
+export default Ember.Mixin.create(KnowsAboutDataLayer, {
 
   application: Ember.inject.controller(),
 
@@ -199,8 +200,10 @@ export default Ember.Mixin.create({
       this.toggleProperty('sidebarRight');
       if (this.get('sidebarRight')) {
         localStorage.setItem('sidebarSide', 'right');
+        this.pushEventToDataLayer('gui', 'toggle sidebar', 'right', null);
       } else {
         localStorage.setItem('sidebarSide', 'left');
+        this.pushEventToDataLayer('gui', 'toggle sidebar', 'left', null);
       }
     },
     setMainCard: function() {
