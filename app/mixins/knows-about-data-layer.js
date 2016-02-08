@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Mixin.create({
 
   pushEventToDataLayer: function(category, action, label, value) {
-    console.log('Push it. Push it good, to:', dataLayer);
 
     var o = {
       'event' : 'GAEvent',
