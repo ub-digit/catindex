@@ -48,7 +48,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
       this.store.save('card', card).then(
         function(response){
           console.log(response);
-          that.pushToDataLayer('card', 'register', response.card_type, null);
+          that.pushEventToDataLayer('card', 'register', response.card_type, null);
           if (target) {
             that.transitionTo(target);
           } else {
