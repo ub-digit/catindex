@@ -3,7 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "moment"
+    "moment",
+    "dataLayer"
   ],
   "browser": true,
   "boss": true,
