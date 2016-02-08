@@ -2,8 +2,9 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 import ResetsScroll from 'catindex/mixins/resets-scroll';
 import IndicatesLoading from 'catindex/mixins/indicates-loading';
+import KnowsAboutDataLayer from 'catindex/mixins/knows-about-data-layer';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, IndicatesLoading, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, IndicatesLoading, KnowsAboutDataLayer, {
 
   model: function() {
     return this.store.find('card', 'primary');
@@ -31,14 +32,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
       controller.set('sidebarRight', true);
     } else {
       controller.set('sidebarRight', false);
-    }    
+    }
 
   },
   actions: {
     saveCard: function(card, target){
       var that = this;
-
-      Ember.$('#confirmModal').modal('hide');
 
       card.registration_type = 'primary';
       card.collection = (card.is_sv) ? 'sv' : null;
@@ -47,7 +46,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
       }).compact();
 
       this.store.save('card', card).then(
-        function(){
+        function(response){
+          console.log(response);
+          that.pushToDataLayer('card', 'register', response.card_type, null);
           if (target) {
             that.transitionTo(target);
           } else {

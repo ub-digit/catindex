@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li>{{#link-to 'home'}}Home{{/link-to}}</li>
+      <li>{{#link-to 'home'}}Start{{/link-to}}</li>
       {{#if session.content.secure.isAdmin}}
         <li>{{#link-to 'users'}}Användare{{/link-to}}</li>
         <li>{{#link-to 'admin' (query-params page=1 problem="all_problems")}}Administration{{/link-to}}</li>

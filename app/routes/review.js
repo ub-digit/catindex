@@ -2,8 +2,9 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 import ResetsScroll from 'catindex/mixins/resets-scroll';
 import IndicatesLoading from 'catindex/mixins/indicates-loading';
+import KnowsAboutDataLayer from 'catindex/mixins/knows-about-data-layer';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, IndicatesLoading, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, IndicatesLoading, KnowsAboutDataLayer, {
 
   model: function() {
     return this.store.find('card', 'secondary');
@@ -54,8 +55,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
     saveCard: function(card, target){
       var that = this;
 
-      Ember.$('#confirmModal').modal('hide');
-
       card.registration_type = 'secondary';
       card.collection = (card.is_sv) ? 'sv' : null;
       card.additional_authors = card.authors.map(function(item) {
@@ -63,7 +62,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
       }).compact();
 
       this.store.save('card', card).then(
-        function(){
+        function(response){
+          that.pushToDataLayer('card', 'review', response.card_type, null);
           if (target) {
             that.transitionTo(target);
           } else {
