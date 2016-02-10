@@ -40,11 +40,15 @@
       </div>
 
       <div class="pull-right">
-        <button disabled={{unless isFormComplete 'disabled'}} class="{{if isFormComplete 'enabled' 'disabled'}} btn btn-primary" {{action 'setConfirmMode'}}>Klar</button>
+        {{#if isFormComplete}}
+        <button class="btn btn-primary" {{action 'setConfirmMode'}}>Klar</button>
+        {{else}}
+        <button class="btn btn-primary" {{action 'validateForm'}}>Klar</button>
+        {{/if}}
       </div>
       {{else}}
         {{partial "register-confirm-view"}}
-      {{/if}}
+        {{/if}}
     </div>
 
     {{partial "image-col"}}

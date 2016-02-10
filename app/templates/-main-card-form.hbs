@@ -1,4 +1,19 @@
 
+
+<div class="row">
+  <div class="col-xs-12">
+    {{#if formValidated}}
+      {{log "formValidated"}}
+    {{#unless isFormComplete}}
+      {{log "isFormComplete"}}
+      <div class="alert alert-danger">
+        <strong>Formuläret är ej korrekt ifyllt</strong>
+      </div>
+    {{/unless}}
+    {{/if}}
+  </div>
+</div>
+    
     <div class="form-inline">
       <div class="form-group {{if showClassificationError 'has-error'}}">
         <label for="signumInput">Signum</label>

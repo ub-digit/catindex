@@ -244,6 +244,16 @@ export default Ember.Mixin.create(KnowsAboutDataLayer, {
       Ember.run.later(function() {
         Ember.$('#saveNextButton').focus();
       });
+    },
+    validateForm: function() {
+      this.set('formValidated', true);
+      this.set('wasClassificationTouched', true);
+      this.set('wasLookupFieldValueTouched', true);
+      this.set('wasLookupFieldTypeTouched', true);
+      this.set('wasTitleTouched', true);
+      this.set('wasYearsTouched', true);
+      this.set('wasReferenceTextTouched', true);
+      this.set('wasProblemTouched', true);
     }
   }
 });

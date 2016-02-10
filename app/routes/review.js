@@ -15,6 +15,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
     controller.set('model', model);
 
     // Reset all
+    controller.set('formValidated', false);
     controller.set('wasClassificationTouched', true);
     controller.set('wasLookupFieldValueTouched', true);
     controller.set('wasLookupFieldTypeTouched', true);
