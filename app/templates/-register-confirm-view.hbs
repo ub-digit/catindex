@@ -51,7 +51,11 @@
       {{/if}}
       <hr/>
       <dt>Problem</dt>
-      <dd>{{model.primary_registrator_problem}}</dd>
+      {{#if model.primary_registrator_problem}}
+        <dd>{{model.primary_registrator_problem}}</dd>
+      {{else}}
+        <dd><em>Inga problem angivna</em></dd>
+      {{/if}}
     </dl>
     <hr/>
     <div class="row">
