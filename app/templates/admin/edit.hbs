@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div id="formCol" class="form-col {{unless sidebarRight 'sidebar-left' 'sidebar-right'}}">
-      <h3>Redigera kort</h3>
+      <h3>Redigera kort <span class="card_number">{{model.ipac_image_id}}</span></h3>
       {{#if editMode}}
         <div class="row cardTypeSelectorRow">
           <div class="col-xs-12">
