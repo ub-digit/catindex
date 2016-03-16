@@ -14,16 +14,18 @@
     
 <div class="form-group {{if showLookupFieldValueError 'has-error'}}">
   <label for="lookupFieldValue">Huvuduppslag</label>
-  {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag" focus-out="setLookupFieldValueTouched"}}
+  {{input value=model.lookup_field_value type="text" class="form-control default-focus-field" id="lookupFieldValue" placeholder="Huvuduppslag" focus-out="setLookupFieldValueTouched" tabindex="1"}}
 </div>
 <div class="form-group {{if showLookupFieldTypeError 'has-error'}}">
 {{#radio-button
   value="author"
+  tabindex="2"
   groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
   <span class="author_type_selection">Författare</span>
 {{/radio-button}}
 {{#radio-button
   value="title"
+  tabindex="3"
   groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
   <span class="title_type_selection">Titel</span>
 {{/radio-button}}
@@ -31,12 +33,12 @@
 {{#if isLookupFieldTypeTitle}}
 <div class="form-group {{if showTitleError 'has-error'}}">
   <label for="titleInput">Titel</label>
-  {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup focus-out="setTitleTouched"}}
+  {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup focus-out="setTitleTouched" tabindex="4"}}
 </div>
 {{/if}}
 
 <hr/>
 <div class="form-group {{if showReferenceTextError 'has-error'}}">
   <label for="referenceInput">Se</label>
-  {{textarea rows="3" value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning" focus-out="setReferenceTextTouched"}}
+  {{textarea rows="3" value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Hänvisning" focus-out="setReferenceTextTouched" tabindex="5"}}
 </div>

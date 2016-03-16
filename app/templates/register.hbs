@@ -32,7 +32,7 @@
             <div class="col-xs-12">
               <div class="form-group {{if showProblemError 'has-error'}}">
                 <label for="problemInput">Problem</label>
-                {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning" focus-out="setProblemTouched"}}
+                {{textarea rows="3" value=model.primary_registrator_problem type="text" class="form-control" id="problemInput" placeholder="Problembeskrivning" focus-out="setProblemTouched" tabindex="50"}}
               </div>
             </div>
           </div>
@@ -41,9 +41,9 @@
 
       <div class="pull-right">
         {{#if isFormComplete}}
-        <button class="btn btn-primary" {{action 'setConfirmMode'}}>Klar</button>
+        <button class="btn btn-primary" {{action 'setConfirmMode'}} tabindex="51">Klar</button>
         {{else}}
-        <button class="btn btn-primary" {{action 'validateForm'}}>Klar</button>
+        <button class="btn btn-primary" {{action 'validateForm'}} tabindex="52">Klar</button>
         {{/if}}
       </div>
       {{else}}

@@ -208,12 +208,21 @@ export default Ember.Mixin.create(KnowsAboutDataLayer, {
     },
     setMainCard: function() {
       this.set('model.card_type', 'main');
+      Ember.run.later(this, function() {
+        Ember.$('.default-focus-field').focus();
+      });
     },
     setReferenceCard: function() {
       this.set('model.card_type', 'reference');
+      Ember.run.later(this, function() {
+        Ember.$('.default-focus-field').focus();
+      });
     },
     setPseudonymCard: function() {
       this.set('model.card_type', 'pseudonym');
+      Ember.run.later(this, function() {
+        Ember.$('.default-focus-field').focus();
+      });
     },
     setClassificationTouched: function() {
       this.set('wasClassificationTouched', true);
@@ -238,6 +247,9 @@ export default Ember.Mixin.create(KnowsAboutDataLayer, {
     },
     setEditMode: function() {
       this.set('editMode', true);
+      Ember.run.later(this, function() {
+        Ember.$('.default-focus-field').focus();
+      });
     },
     setConfirmMode: function() {
       this.set('editMode', false);

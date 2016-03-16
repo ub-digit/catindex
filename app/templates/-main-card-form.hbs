@@ -17,7 +17,7 @@
     <div class="form-inline">
       <div class="form-group {{if showClassificationError 'has-error'}}">
         <label for="signumInput">Signum</label>
-        {{#catindex-x-select value=model.classification class="form-control" focus-out="setClassificationTouched"}}
+        {{#catindex-x-select value=model.classification class="default-focus-field form-control" focus-out="setClassificationTouched" tabindex=1}}
         {{#x-option}}
         Välj...
         {{/x-option}}
@@ -30,7 +30,7 @@
       </div>
       <div class="checkbox">
         <label>
-          {{input type="checkbox" name="isSv" checked=model.is_sv}} Sv
+          {{input type="checkbox" name="isSv" checked=model.is_sv tabindex="2"}} Sv
         </label>
       </div>
     </div>
@@ -45,18 +45,20 @@
         </a>
       </div>
       {{/if}}
-      {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag" focus-out="setLookupFieldValueTouched"}}
+      {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Huvuduppslag" focus-out="setLookupFieldValueTouched" tabindex="3"}}
     </div>
 
 
     <div class="form-group {{if showLookupFieldTypeError 'has-error'}}">
     {{#radio-button
       value="author"
+      tabindex="4"
       groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
       <span class="author_type_selection">Författare</span>
       {{/radio-button}}
       {{#radio-button
         value="title"
+        tabindex="5"
         groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
         <span class="title_type_selection">Titel</span>
         {{/radio-button}}
@@ -74,7 +76,7 @@
 
         <div class="form-group {{if showTitleError 'has-error'}}">
           <label for="titleInput">Titel</label>
-          {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup focus-out="setTitleTouched"}}
+          {{textarea rows="3" value=model.title type="text" class="form-control" id="titleInput" placeholder="Titel" disabled=isTitleLookup focus-out="setTitleTouched" tabindex="6"}}
         </div>
 
         <div class="row">
@@ -82,14 +84,14 @@
             <div class="form-group {{if showYearsError 'has-error'}}">
               <label>År</label>
               <div class="input-group">
-                {{input value=model.year_from type="text" class="form-control" id="yearInput1" placeholder="År" disabled=model.no_year focus-out="setYearsTouched"}}
+                {{input value=model.year_from type="text" class="form-control" id="yearInput1" placeholder="År" disabled=model.no_year focus-out="setYearsTouched" tabindex="7"}}
                 <span class="input-group-addon">
                   -
                 </span>
-                {{input value=model.year_to type="text" class="form-control" id="yearInput2" placeholder="År" disabled=model.no_year focus-out="setYearsTouched"}}
+                {{input value=model.year_to type="text" class="form-control" id="yearInput2" placeholder="År" disabled=model.no_year focus-out="setYearsTouched" tabindex="8"}}
                 <span class="input-group-addon">
                   <label>
-                  {{input type="checkbox" name="no_year" checked=model.no_year}} Utan år
+                  {{input type="checkbox" name="no_year" checked=model.no_year tabindex="9"}} Utan år
                   </label>
                 </span>
               </div>

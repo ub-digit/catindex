@@ -34,7 +34,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ResetsScroll, Indicat
     } else {
       controller.set('sidebarRight', false);
     }
-
+    Ember.run.later(this, function() {
+      Ember.$('.default-focus-field').focus();
+    });
   },
   actions: {
     saveCard: function(card, target){

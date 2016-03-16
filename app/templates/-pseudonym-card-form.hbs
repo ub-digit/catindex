@@ -14,9 +14,9 @@
     
 <div class="form-group {{if showLookupFieldValueError 'has-error'}}">
   <label for="lookupFieldValue">Pseudonym</label>
-  {{input value=model.lookup_field_value type="text" class="form-control" id="lookupFieldValue" placeholder="Pseudonym" focus-out="setLookupFieldValueTouched"}}
+  {{input value=model.lookup_field_value type="text" class="default-focus-field form-control" id="lookupFieldValue" placeholder="Pseudonym" focus-out="setLookupFieldValueTouched" tabindex="1"}}
 </div>
 <div class="form-group {{if showReferenceTextError 'has-error'}}">
   <label for="referenceInput">Pseudonym för</label>
-  {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Pseudonym för" focus-out="setReferenceTextTouched"}}
+  {{textarea value=model.reference_text type="text" class="form-control" id="referenceInput" placeholder="Pseudonym för" focus-out="setReferenceTextTouched" tabindex="2"}}
 </div>
