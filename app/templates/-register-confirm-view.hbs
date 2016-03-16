@@ -2,15 +2,16 @@
   <div class="col-xs-12">
     <dl class="dl-horizontal">
       {{#if showMainCard}}
-        <dt>Typ av kort</dt>
-        <dd>Huvudkort</dd>
         <dt>Signum</dt>
         <dd>{{model.classification}} {{#if model.is_sv}}(Sv){{/if}}</dd>
           <dt>Huvuduppslag</dt>
-          <dd>{{model.lookup_field_value}}</dd>
-          <dt>Typ av uppslag</dt>
-          <dd>{{#if isLookupFieldTypeAuthor}}Författare{{else if isLookupFieldTypeTitle}}Titel{{/if}}</dd>
-            {{#if isLookupFieldTypeAuthor}}
+          <dd>{{model.lookup_field_value}}
+            {{#if model.lookup_field_value}}
+              <em>({{#if isLookupFieldTypeAuthor}}Författare{{else if isLookupFieldTypeTitle}}Titel{{/if}})</em>
+            {{/if}}
+          </dd>
+          {{#if isLookupFieldTypeAuthor}}
+            {{#if model.authors}}
               <dt>Medförfattare</dt>
               <dd>
                 <ul class="list-unstyled">
@@ -20,36 +21,43 @@
                 </ul>
               </dd>
             {{/if}}
+          {{/if}}
+          <dt>Titel</dt>
+          <dd>{{model.title}}</dd>
+          <dt>År</dt>
+          {{#if model.no_year}}
+            <dd>UÅ</dd>
+          {{else}}
+            <dd>{{model.year_from}}{{#if model.year_to}}-{{model.year_to}}{{/if}}</dd>
+          {{/if}}
+          <hr/>
+          <dt>Typ av kort</dt>
+          <dd>Huvudkort</dd>
+          {{else if showReferenceCard}}
+          <dt>Huvuduppslag</dt>
+          <dd>{{model.lookup_field_value}}
+            {{#if model.lookup_field_value}}
+              <em>({{#if isLookupFieldTypeAuthor}}Författare{{else if isLookupFieldTypeTitle}}Titel{{/if}})</em>
+            {{/if}}
+          </dd>
+          {{#if isLookupFieldTypeTitle}}
             <dt>Titel</dt>
             <dd>{{model.title}}</dd>
-            <dt>År</dt>
-            {{#if model.no_year}}
-              <dd>UÅ</dd>
-            {{else}}
-              <dd>{{model.year_from}}{{#if model.year_to}}-{{model.year_to}}{{/if}}</dd>
-            {{/if}}
-            {{else if showReferenceCard}}
-            <dt>Typ av kort</dt>
-            <dd>Hänvisningskort</dd>
-            <dt>Huvuduppslag</dt>
-            <dd>{{model.lookup_field_value}}</dd>
-            <dt>Typ av uppslag</dt>
-            <dd>{{#if isLookupFieldTypeAuthor}}Författare{{else}}Titel{{/if}}</dd>
-              {{#if isLookupFieldTypeTitle}}
-                <dt>Titel</dt>
-                <dd>{{model.title}}</dd>
-              {{/if}}
-              <dt>Se</dt>
-              <dd>{{model.reference_text}}</dd>
-              {{else if showPseudonymCard}}
-              <dt>Typ av kort</dt>
-              <dd>Pseudonymkort</dd>
-              <dt>Pseudonym</dt>
-              <dd>{{model.lookup_field_value}}</dd>
-              <dt>Pseudonym för</dt>
-              <dd>{{model.reference_text}}</dd>
+          {{/if}}
+          <dt>Se</dt>
+          <dd>{{model.reference_text}}</dd>
+          <hr/>
+          <dt>Typ av kort</dt>
+          <dd>Hänvisningskort</dd>
+          {{else if showPseudonymCard}}
+          <dt>Pseudonym</dt>
+          <dd>{{model.lookup_field_value}}</dd>
+          <dt>Pseudonym för</dt>
+          <dd>{{model.reference_text}}</dd>
+          <hr/>
+          <dt>Typ av kort</dt>
+          <dd>Pseudonymkort</dd>
       {{/if}}
-      <hr/>
       <dt>Problem</dt>
       {{#if model.primary_registrator_problem}}
         <dd>{{model.primary_registrator_problem}}</dd>
