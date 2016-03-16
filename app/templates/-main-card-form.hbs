@@ -53,12 +53,12 @@
     {{#radio-button
       value="author"
       groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
-      Författare
+      <span class="author_type_selection">Författare</span>
       {{/radio-button}}
       {{#radio-button
         value="title"
         groupValue=model.lookup_field_type focus-out="setLookupFieldTypeTouched"}}
-        Titel
+        <span class="title_type_selection">Titel</span>
         {{/radio-button}}
     </div>
         {{#if isLookupFieldTypeAuthor}}
